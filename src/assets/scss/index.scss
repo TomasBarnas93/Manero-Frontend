@@ -1,10 +1,6 @@
-@import "/node_modules/tailwindcss/base.css";
-@import "/node_modules/tailwindcss/components.css";
-@import "/node_modules/tailwindcss/utilities.css";
-
 @import "./core/variables";
-@import "./core/mixins";
 @import "./core/imports";
 
 @import "./components/header";
 @import "./components/utilities";
+@import "./components/defaults";

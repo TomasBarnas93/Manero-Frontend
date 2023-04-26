@@ -2,6 +2,8 @@ import React from 'react'
 
 export const Header = () => {
   return (
-    <div>Header</div>
+    <div className='text-5xl'>
+      Header
+    </div>
   )
 }
