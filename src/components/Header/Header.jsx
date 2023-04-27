@@ -6,7 +6,14 @@ export const Header = () => {
       Header Testing 1111111
 
       <div className="container">
-        Create new User
+        Create new User 1
+      </div>
+      <div className="container">
+        Login new user
+      </div>
+
+      <div className="container">
+        ID231
       </div>
     </div>
   )
