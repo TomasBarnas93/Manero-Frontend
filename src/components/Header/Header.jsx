@@ -17,7 +17,7 @@ export const Header = () => {
       </div>
 
       <div className="container">
-        ID232
+        ID232 fixed
       </div>
     </div>
   )
