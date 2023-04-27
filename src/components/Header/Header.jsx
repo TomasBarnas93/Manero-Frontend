@@ -11,6 +11,10 @@ export const Header = () => {
       <div className="container">
         Login new user
       </div>
+
+      <div className="container">
+        ID231
+      </div>
     </div>
   )
 }
