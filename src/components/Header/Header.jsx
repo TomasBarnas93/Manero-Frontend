@@ -8,6 +8,10 @@ export const Header = () => {
       <div className="container">
         Create new User
       </div>
+
+      <div className="container">
+        ID231
+      </div>
     </div>
   )
 }
