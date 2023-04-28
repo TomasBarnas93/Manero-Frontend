@@ -26,7 +26,7 @@ export const Header = () => {
         <Icon button="text-xl w-8" icon="fa-regular fa-bag-shopping" />
         <span
           className={
-            cartCount == 0
+            cartCount === 0
               ? "hidden"
               : "absolute -left-3 bottom-1 rounded-full bg-red-600 w-4 h-4 text-white text-sm leading-tight text-center"
           }
