@@ -1,15 +1,18 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 
 const Icon = (props) => {
 
 
-
   return (
-    <button
-      className={`${props.button} hover:bg-slate-300 rounded-3xl text-center`}
-    >
-      <i className={`${props.icon}`}></i>
-    </button>
+
+      <NavLink
+        to={props.to}
+        className={`${props.button} rounded-3xl text-center`}
+      >
+        <i className={`${props.icon}`}></i>
+      </NavLink>
+    
   );
 }
 
