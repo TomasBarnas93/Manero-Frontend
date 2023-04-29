@@ -8,9 +8,8 @@ export const Header = () => {
     const cartCount = localStorage.getItem("cartCount");
     setCartCount(cartCount);
 
-    setCartCount(0);
+    setCartCount(2);
   }, [cartCount]);
-
 
   return (
     <header className="border grid grid-cols-6 p-2">
@@ -22,13 +21,13 @@ export const Header = () => {
 
       <div className="col-start-3 col-span-2 text-xl text-center">Manero</div>
 
-      <div className="col-start-6 col-span-1 text-center ">
-        <Icon button="text-xl w-8" icon="fa-regular fa-bag-shopping" />
+      <div className="col-start-6 col-span-1 text-center relative">
+        <Icon to="/" button="text-xl" icon="fa-regular fa-bag-shopping"></Icon>
         <span
           className={
             cartCount === 0
               ? "hidden"
-              : "absolute -left-3 bottom-1 rounded-full bg-red-600 w-4 h-4 text-white text-sm leading-tight text-center"
+              : "absolute rounded-full bg-red-400 w-4 h-4 text-white text-sm leading-tight text-center"
           }
         >
           {cartCount}
@@ -38,7 +37,7 @@ export const Header = () => {
       <div className="fixed bottom-0 left-0 border w-full h-14 lg:hidden">
         <div className="grid grid-cols-5 py-3">
           <div className="col-start-1 col-span-1 text-center">
-            <Icon button="text-xl w-8 h-8" icon="fa-light fa-home-lg" />
+            <Icon button="text-xl" icon="fa-light fa-home-lg" />
           </div>
 
           <div className="col-start-2 col-span-1 text-center">
