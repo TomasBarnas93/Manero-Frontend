@@ -1,5 +1,4 @@
 import React from 'react'
-import Icon from '../../misc/Icon'
 import Button from '../../misc/Button'
 
 const SmallShowCase = () => {
