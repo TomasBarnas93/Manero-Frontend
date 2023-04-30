@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Icon from "../misc/Icon";
 import { NavLink } from "react-router-dom";
+import BurgerButton from "../misc/BurgerButton";
 
 export const Header = () => {
   const [cartCount, setCartCount] = useState(0);
@@ -16,17 +17,15 @@ export const Header = () => {
   return (
     <header className="p-3 lg:border-b">
       {/* Small Screen */}
-      <div className="grid grid-cols-10">
-        <Icon
-          id="toggle-icon"
-          button="col-start-1 col-span-1 text-xl w-10 lg:hidden"
-          icon="fa-solid fa-bars fa-lg"
-        />
+      <nav className="grid grid-cols-10">
+
+        {/* Hamburger Menu */}
+        <BurgerButton id="toggle-icon"/>
 
         {/* Logo */}
         <NavLink
           to="/"
-          className="col-start-5 col-span-2 text-xl lg:text-2xl text-center lg:text-left lg:col-start-1"
+          className="col-start-5 col-span-2 text-xl lg:text-2xl text-center lg:text-left lg:col-start-2"
         >
           Manero
         </NavLink>
@@ -88,7 +87,7 @@ export const Header = () => {
             </div>
           </div>
         </div>
-      </div>
+      </nav>
     </header>
   );
 };
