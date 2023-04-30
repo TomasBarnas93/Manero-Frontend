@@ -5,7 +5,6 @@ import BurgerButton from "../misc/BurgerButton";
 
 export const Header = () => {
   const [cartCount, setCartCount] = useState(0);
-  const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
     const cartCount = localStorage.getItem("cartCount");
