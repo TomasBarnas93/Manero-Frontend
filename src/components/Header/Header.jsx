@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Icon from "../misc/Icon";
+import { NavLink } from "react-router-dom";
 
 export const Header = () => {
   const [cartCount, setCartCount] = useState(0);
@@ -8,55 +9,85 @@ export const Header = () => {
     const cartCount = localStorage.getItem("cartCount");
     setCartCount(cartCount);
 
-    setCartCount(0);
+    setCartCount(2);
   }, [cartCount]);
 
-
   return (
-    <header className="border grid grid-cols-6 p-2">
-      <Icon
-        id="toggle-icon"
-        button="col-start-1 col-span-1 text-xl lg:hidden w-10"
-        icon="fa-solid fa-bars fa-lg"
-      />
+    <header className="p-3 lg:border-b">
 
-      <div className="col-start-3 col-span-2 text-xl text-center">Manero</div>
+      {/* Small Screen */}
+      <div className="grid grid-cols-10">
+        <Icon
+          id="toggle-icon"
+          button="col-start-1 col-span-1 text-xl w-10 lg:hidden"
+          icon="fa-solid fa-bars fa-lg"
+        />
 
-      <div className="col-start-6 col-span-1 text-center ">
-        <Icon button="text-xl w-8" icon="fa-regular fa-bag-shopping" />
-        <span
-          className={
-            cartCount === 0
-              ? "hidden"
-              : "absolute -left-3 bottom-1 rounded-full bg-red-600 w-4 h-4 text-white text-sm leading-tight text-center"
-          }
+        {/* Logo */}
+        <NavLink
+          to="/"
+          className="col-start-5 col-span-2 text-xl lg:text-2xl text-center lg:text-left lg:col-start-1"
         >
-          {cartCount}
-        </span>
-      </div>
+          Manero
+        </NavLink>
 
-      <div className="fixed bottom-0 left-0 border w-full h-14 lg:hidden">
-        <div className="grid grid-cols-5 py-3">
-          <div className="col-start-1 col-span-1 text-center">
-            <Icon button="text-xl w-8 h-8" icon="fa-light fa-home-lg" />
-          </div>
+        <div className="col-start-4 col-span-4 max-lg:hidden justify-between flex">
+          
+          <NavLink to="/home" className="col-start-3 col-span-1"> Home </NavLink>
+          <NavLink to="/search" className="col-start-4"> Search </NavLink>
+          <NavLink to="/favorites" className=""> Favorites </NavLink>
+          <NavLink to="/account" className=""> Account </NavLink>
+            
 
-          <div className="col-start-2 col-span-1 text-center">
-            <Icon button="text-xl w-8 h-8" icon="fa-light fa-search" />
-          </div>
 
-          <div className="col-start-3 col-span-1 text-center">
-            <Icon button="text-xl w-8 h-8" icon="fa-light fa-heart" />
-          </div>
+        </div>
 
-          <div className="col-start-4 col-span-1 text-center">
-            <Icon button="text-xl w-8 h-8" icon="fa-light fa-user" />
-          </div>
+        
 
-          <div className="col-start-5 col-span-1 text-center">
-            <Icon button="text-xl w-8 h-8" icon="fa-light fa-bag-shopping" />
+        {/* Shopping Cart */}
+        <div className="col-start-10 col-span-1 text-center relative">
+          <Icon
+            to="/"
+            button="text-xl"
+            icon="fa-regular fa-bag-shopping"
+          ></Icon>
+          <span
+            className={
+              cartCount === 0
+                ? "hidden"
+                : "absolute rounded-full bg-red-400 w-4 h-4 text-white text-sm leading-tight text-center"
+            }
+          >
+            {cartCount}
+          </span>
+        </div>
+
+        {/* Bottom menu, small screen */}
+        <div className="fixed bottom-0 left-0 border w-full h-14 lg:hidden">
+          <div className="grid grid-cols-5 py-3">
+            <div className="col-start-1 col-span-1 text-center">
+              <Icon button="text-xl" icon="fa-light fa-home-lg" />
+            </div>
+
+            <div className="col-start-2 col-span-1 text-center">
+              <Icon button="text-xl w-8 h-8" icon="fa-light fa-search" />
+            </div>
+
+            <div className="col-start-3 col-span-1 text-center">
+              <Icon button="text-xl w-8 h-8" icon="fa-light fa-heart" />
+            </div>
+
+            <div className="col-start-4 col-span-1 text-center">
+              <Icon button="text-xl w-8 h-8" icon="fa-light fa-user" />
+            </div>
+
+            <div className="col-start-5 col-span-1 text-center">
+              <Icon button="text-xl w-8 h-8" icon="fa-light fa-bag-shopping" />
+            </div>
           </div>
         </div>
+
+        
       </div>
     </header>
   );
