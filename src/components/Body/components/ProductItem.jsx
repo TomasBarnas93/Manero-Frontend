@@ -1,25 +1,34 @@
 import React from "react";
+import StarRating from "../../misc/StarRating";
 
 const ProductItem = ({ product }) => {
   return (
-    <div className="bg-slate-200 rounded-lg shadow-md p-4 h-64 w-64 ;">
-      <div className="flex justify-center">
+    <>
+      <button className="relative">
       <img
-        className="h-32"
-        src={product.imageUrl}
-        alt="Img"
-      />
-      </div>
+          className="rounded-lg shadow-md p-4 h-64 w-56"
+          src={product.imageUrl}
+          alt="Img"
+          style={{ background: "transparent" }}
+        />
+        <div className="absolute top-0 right-0 m-2 flex flex-col">
+          <button className="link mb-2"><i className="fa-regular fa-heart opacity-50"></i></button>
+          <button className="link"><i className="fa-regular fa-bag-shopping opacity-50"></i></button>
+        </div>
+      </button>
+
       <div>
-      <div>
-        <h3 className="text-center underline underline-offset-8 font-bold">{product.name}</h3>
-        <p className="text-center">{product.description}</p>
+        <div>
+          <div>
+            <StarRating rating={product.starRating} />
+            <h3 className="text-left">{product.name}</h3>
+          </div>
+          <div>
+            <p className="text-left font-bold">${product.price}</p>
+          </div>
+        </div>
       </div>
-      <div>
-        <p className="text-center font-bold">{product.price}$</p>
-      </div>
-      </div>
-    </div>
+    </>
   );
 };
 
