@@ -14,7 +14,7 @@ export const Header = () => {
   }, [cartCount]);
 
   return (
-    <header className="p-3 lg:border-b">
+    <header id="header" className="p-3 lg:border-b">
       {/* Small Screen */}
       <nav className="grid grid-cols-10">
 
