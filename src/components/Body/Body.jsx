@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom"
 import Home from "./views/Home"
+import Account from "./views/Account"
 
 const Body = () => {
   return (
@@ -9,7 +10,7 @@ const Body = () => {
             <Route path="/search" element={<Home/>} />
             <Route path="/cart" element={<Home/>} />
             <Route path="/favorites" element={<Home/>} />
-            <Route path="/account" element={<Home/>} />
+            <Route path="/account" element={<Account />} />
             <Route path="/contacts" element={<Home/>} />
         </Routes>
     </main>
