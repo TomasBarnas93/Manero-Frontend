@@ -9,14 +9,7 @@ const Carousel = () => {
   const [activeSlide, setActiveSlide] = useState(0);
 
 
-  const nextSlide = () => {
-    setActiveSlide((prevSlide) => (prevSlide + 1) % products.length);
-  };
 
-
-  const prevSlide = () => {
-    setActiveSlide((prevSlide) => (prevSlide + products.length - 1) % products.length);
-  };
 
 
   const slides = products.map((product) => ({
