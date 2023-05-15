@@ -32,7 +32,7 @@ const BestSellers = () => {
     <div className="mt-5 mb-5 ml-2">
       <div className="flex justify-between pr-5">
         <h2 className="font-bold">Best Sellers</h2>
-        <button>view all></button>
+        <button>view all&gt;</button>
       </div>
       <ul className="flex gap-6">
         {limitedProducts.map((product) => (
