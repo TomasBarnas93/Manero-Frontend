@@ -92,3 +92,12 @@
   
   border: 1px solid black;
 }
+
+.bottom-menu{
+  @apply fixed;
+  @apply bottom-0;
+  @apply left-0;
+  @apply w-full;
+  z-index: 999;
+  @apply bg-white;
+}

@@ -2,9 +2,21 @@ import React, { useState, useEffect } from "react";
 import Icon from "../misc/Icon";
 import { NavLink } from "react-router-dom";
 import BurgerButton from "../misc/BurgerButton";
+import { useLocation } from "react-router-dom";
 
 export const Header = () => {
+
+
+
+  const [activePageMobile, setActivePageMobile] = useState("");
+  const location = useLocation();
   const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    setActivePageMobile(location.pathname);
+  }, [location]);
+
+
 
   useEffect(() => {
     const cartCount = localStorage.getItem("cartCount");
@@ -14,7 +26,7 @@ export const Header = () => {
   }, [cartCount]);
 
   return (
-    <header id="header" className="p-3 lg:border-b">
+    <header id="header" className="p-3 relative lg:border-b">
       {/* Small Screen */}
       <nav className="grid grid-cols-10">
 
@@ -63,26 +75,26 @@ export const Header = () => {
         </div>
 
         {/* Bottom menu, small screen */}
-        <div className="fixed bottom-0 left-0 border-t w-full h-14 lg:hidden">
+        <div className="border-t h-14 bottom-menu lg:hidden">
           <div className="grid grid-cols-5 py-3">
-            <div className="col-start-1 col-span-1 text-center">
+            <div className={`col-start-1 col-span-1 text-center`}>
               <Icon to="/" button="text-xl" icon="fa-light fa-home-lg" />
             </div>
 
             <div className="col-start-2 col-span-1 text-center">
-              <Icon to="search" button="text-xl w-8 h-8" icon="fa-light fa-search" />
+              <Icon to="/search" button="text-xl w-8 h-8" icon="fa-light fa-search" active={activePageMobile}/>
             </div>
 
             <div className="col-start-3 col-span-1 text-center">
-              <Icon to="shoppingCart" button="text-xl w-8 h-8" icon="fa-light fa-bag-shopping" />
+              <Icon to="/shoppingCart" button="text-xl w-8 h-8" icon="fa-light fa-bag-shopping" active={activePageMobile}/>
             </div>
 
             <div className="col-start-4 col-span-1 text-center">
-              <Icon to="favorites" button="text-xl w-8 h-8" icon="fa-light fa-heart" />
+              <Icon to="/favorites" button="text-xl w-8 h-8" icon="fa-light fa-heart" active={activePageMobile} />
             </div>
 
             <div className="col-start-5 col-span-1 text-center">
-              <Icon to="account" button="text-xl w-8 h-8" icon="fa-light fa-user" />
+              <Icon to="/account" button="text-xl w-8 h-8" icon="fa-light fa-user" active={activePageMobile}/>
             </div>
           </div>
         </div>
