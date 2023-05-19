@@ -1,0 +1,133 @@
+.onboarding-container,
+.onboarding-container * {
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+
+.onboarding-container {
+  z-index: 300;
+  position: fixed;
+  font-family: "Roboto", sans-serif;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, calc(-50% + 25px));
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 100ms ease;
+  width: 90%; /* Adjust the width to your liking */
+  max-width: 450px; /* Limit the maximum width on larger screens */
+}
+
+.onboarding-container.active {
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+.onboarding-container .content {
+  background: #fff;
+  padding: 30px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 800px; /* Limit the maximum width of the content */
+  margin: 0 auto; /* Center the content horizontally */
+  
+}
+
+.onboarding-container .steps {
+  display: flex;
+  width: 300%;
+  transition: all 400ms ease;
+}
+
+.onboarding-container h3 {
+  margin: 0;
+  font-size: 32px;
+  text-align: center;
+  padding: 0 32px;
+}
+
+.onboarding-container p {
+  line-height: 1.8;
+  padding: 0 32px;
+  margin-top: 10px;
+  font-size: 16px;
+  color: grey;
+ text-align: center;
+  
+}
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #dbe3f5;
+}
+
+.onboarding-container .next-btn {
+  width: 75%;
+  padding: 18px 32px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  background-color: black;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  border-radius: 40px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.onboarding-container .dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.onboarding-container .dot {
+  width: 10px;
+  height: 10px;
+  background: #dbdbdb;
+  border-radius: 50%;
+  transition: all 400ms ease;
+}
+
+.onboarding-container .dot.active {
+  background: #222;
+}
+
+@media (max-width: 768px) {
+  .onboarding-container {
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-height: calc(100vh - 50px);
+    overflow-y: auto;
+    margin-top: 125px;
+    width: 110%;
+  }
+
+  .onboarding-container .next-btn {
+    margin-top: 10px;
+    
+  }
+
+
+}
+
+@media (min-width: 769px) {
+  .onboarding-container .content {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px;
+  }
+
+  .onboarding-container .next-btn {
+    margin-top: 40px;
+  }
+}
