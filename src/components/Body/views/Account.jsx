@@ -10,7 +10,6 @@ const Account = () => {
         {/* <Login/> */}
 
         <Register />
-
     </main>
 
 
