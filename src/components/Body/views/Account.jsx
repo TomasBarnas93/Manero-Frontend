@@ -1,19 +1,25 @@
-import React from 'react'
+import {React, useContext} from 'react'
 import Login from './Login'
 import Register from './Register'
+import { AuthContext } from '../../../contexts/AuthProvider'
+import Home from './Home'
+import { useNavigate } from "react-router-dom";
 
 const Account = () => {
-  return (
-    <main>
+  const authContext = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { isAuthenticated } = authContext;
 
-        {/* Here we will redirect the user to login if they are not logged in. */}
-        {/* <Login/> */}
+  if(!isAuthenticated){
 
-        <Register />
-    </main>
-
-
-  )
+    navigate('/login');
+  }
+  else{
+    return (
+      // Here you place account info
+      <Home />
+    )
+  }
 }
 
 export default Account
