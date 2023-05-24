@@ -3,7 +3,7 @@ import { ProductContext } from "../../../contexts/ProductProvider";
 import ProductItem from "./ProductItem";
 
 const BestSellers = () => {
-  const products = useContext(ProductContext);
+  const {products} = useContext(ProductContext);
   const [numOfProducts, setNumOfProducts] = useState(4);
 
   useEffect(() => {

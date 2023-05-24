@@ -1,12 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import StarRating from '../../misc/StarRating';
 import { ProductContext } from '../../../contexts/ProductProvider';
 
 function Details() {
   const { id } = useParams();
-  const products = useContext(ProductContext);
+  const { fetchSingleProduct } = useContext(ProductContext);
   const [counter, setCounter] = useState(1);
+  const [product, setProduct] = useState(null); 
 
   const plusCounter = () => {
     setCounter(prevCounter => prevCounter + 1);
@@ -21,7 +22,24 @@ function Details() {
   const productSizeList = ["XXL", "XL", "S", "M", "L", "XS"];
   const colorOptions = ["#ff6262", "#63c7ff", "#f8e7cd", "#323858", "#111111"];
 
-  const product = products.find((item) => item.id === id);
+ useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const data = await fetchSingleProduct(id);
+      setProduct(data);
+    } catch (error) {
+      console.error('Error fetching product:', error);
+    }
+  };
+
+  fetchData();
+}, [id]);
+
+  if (product === null) {
+    return <>loading..</>;
+  }
+
+console.log(product);
 
   return (
     <div className="container px-4 mx-auto">
@@ -39,7 +57,7 @@ function Details() {
             <i className="fa-regular fa-heart opacity-50"></i>
           </button>
         </div>
-        <StarRating rating={product.starRating} />
+        <StarRating rating={product.rating} />
         <div className='flex gap-48'>
         <p>${product.price}</p>
         <div className='flex gap-2'>
