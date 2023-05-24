@@ -65,11 +65,11 @@ function Details() {
           <p>Color</p>
           <div className="flex pl-5">
             {colorOptions.map((color) => (
-              <div
+              <button
                 key={color}
                 className="w-8 h-8 rounded-full mr-2"
                 style={{ backgroundColor: color }}
-              ></div>
+              ></button>
             ))}
           </div>
         </div>
