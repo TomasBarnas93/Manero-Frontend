@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./views/Home";
 import Account from "./views/Account";
 import Details from "./views/Details";
+import Login from "./views/Login";
 
 const Body = () => {
   return (
@@ -14,6 +15,7 @@ const Body = () => {
         <Route path="/account" element={<Account />} />
         <Route path="/contacts" element={<Home />} />
         <Route path="/details/:id" element={<Details />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </main>
   );
