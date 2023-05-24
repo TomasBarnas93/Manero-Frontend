@@ -1,6 +1,6 @@
 const getProductService = async () => {
   try {
-    const response = await fetch('https://manero-backend-group-3.azurewebsites.net/v1/api/Product');
+    const response = await fetch('https://manero-backend-group-3.azurewebsites.net/v1/api/products');
     const data = await response.json();
     return data;
   } catch (error) {
