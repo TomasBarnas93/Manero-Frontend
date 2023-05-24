@@ -1,15 +1,15 @@
-  import React, { useState, useContext } from 'react';
+  import React, { useState, useContext, useEffect } from 'react';
   import { useParams } from 'react-router-dom';
   import StarRating from '../../misc/StarRating';
   import { ProductContext } from '../../../contexts/ProductProvider';
   import Reviews from '../../misc/Reviews';
   import { ReviewProvider } from '../../../contexts/ReviewProvider';
 
-
-  function Details() {
-    const { id } = useParams();
-    const products = useContext(ProductContext);
-    const [counter, setCounter] = useState(1);
+function Details() {
+  const { id } = useParams();
+  const { fetchSingleProduct } = useContext(ProductContext);
+  const [counter, setCounter] = useState(1);
+  const [product, setProduct] = useState(null); 
 
     const plusCounter = () => {
       setCounter(prevCounter => prevCounter + 1);
@@ -24,16 +24,34 @@
     const productSizeList = ["XXL", "XL", "S", "M", "L", "XS"];
     const colorOptions = ["#ff6262", "#63c7ff", "#f8e7cd", "#323858", "#111111"];
 
-    const product = products.find((item) => item.id === id);
+ useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const data = await fetchSingleProduct(id);
+      setProduct(data);
+    } catch (error) {
+      console.error('Error fetching product:', error);
+    }
+  };
 
-    return (
-      <div className="container px-4 mx-auto">
-        <div>
-          <img
-            src={product.imageUrl}
-            alt="img"
-            className="rounded-lg shadow-md p-4 h-64 w-full lg:w-80"
-          />
+  fetchData();
+}, [id]);
+
+  if (product === null) {
+    return <>loading..</>;
+  }
+
+console.log(product);
+
+  return (
+    <div className="container px-4 mx-auto">
+      <div>
+        <img
+          src={product.imageUrl}
+          alt="img"
+          className="rounded-lg shadow-md p-4 h-64 w-full lg:w-80"
+        />
+      </div>
         </div>
         <div className="pt-4">
           <div className='flex gap-24'>
@@ -82,12 +100,9 @@
           </div>
           <button className='bg-black hover:bg-blue-600 text-white w-80 py-2 rounded-3xl mt-11'>+ ADD TO CART</button>
 
-
-                
           <ReviewProvider productId={id}>
             <Reviews />
           </ReviewProvider>
-
 
         </div>
       </div>
