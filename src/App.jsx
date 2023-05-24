@@ -4,6 +4,7 @@ import Body from './components/Body/Body';
 import { Header } from './components/Header/Header';
 import { AuthProvider } from './contexts/AuthProvider';
 import SplashScreen from './components/Body/components/SplashScreen';
+import { ReviewProvider } from './contexts/ReviewProvider';
 
 
 function App() {
@@ -39,8 +40,10 @@ function App() {
   return (
     <AuthProvider>
     <ProductProvider>
+    <ReviewProvider>
       <Header />
       <Body />
+    </ReviewProvider>
     </ProductProvider>
     </AuthProvider>
   );
