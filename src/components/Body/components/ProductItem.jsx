@@ -31,7 +31,7 @@ const ProductItem = ({ product }) => {
       <div>
         <div>
           <div>
-            <StarRating rating={product.starRating} />
+            <StarRating rating={product.rating} />
             <h3 className="text-left">{product.name}</h3>
           </div>
           <div>

@@ -5,7 +5,7 @@ import { ProductContext } from '../../../contexts/ProductProvider';
 
 
 const Carousel = () => {
-  const products = useContext(ProductContext);
+  const {products} = useContext(ProductContext);
   const [activeSlide, setActiveSlide] = useState(0);
 
 
