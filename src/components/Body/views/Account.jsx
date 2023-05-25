@@ -2,11 +2,15 @@
 import {React, useContext, useEffect, useState} from 'react'
 import { AuthContext } from '../../../contexts/AuthProvider'
 import { useNavigate } from "react-router-dom";
+import MenuRow from '../components/MenuRow';
+import Login from './Login';
 
 const Account = () => {
   const navigate = useNavigate();
 
   const [authenticated, setAuthenticated] = useState(false);
+
+  const { isAuthenticated } = useContext(AuthContext);
 
   useEffect(() => {
     isAuthenticated().then((result) => {
@@ -17,8 +21,12 @@ const Account = () => {
 
   const handleSignOut = () => {
     // Handle sign out logic here
-    navigate('/login'); // Redirect to the login page after sign out
+    navigate('/logout'); // Redirect to the login page after sign out
   };
+
+  if(authenticated == false){
+    return <Login />
+  }
 
   return (
     <div className="flex items-center justify-center min-h-screen">
@@ -38,9 +46,9 @@ const Account = () => {
             <MenuRow title="My Address" iconClass="fas fa-map-marker-alt" addBottomBorder fullWidth />
             <MenuRow title="My Promocodes" iconClass="fas fa-tags" addBottomBorder fullWidth />
             <div className="flex items-center h-12 py-2 border-b border-gray-300 w-full">
-  <i className="fas fa-sign-out-alt text-black-500 mr-2"></i>
-  <p className="text-base font-normal text-left ml-3" onClick={handleSignOut}>Sign Out</p>
-</div>
+            <i i className="fas fa-sign-out-alt text-black-500 mr-2"></i>
+            <button className="text-base font-normal text-left ml-3" onClick={handleSignOut}>Sign Out</button>
+            </div>
           </div>
         </div>
       </div>
