@@ -1,23 +1,23 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import StarRating from '../../misc/StarRating';
-import { ProductContext } from '../../../contexts/ProductProvider';
-import Reviews from '../../misc/Reviews';
-import { ReviewProvider } from '../../../contexts/ReviewProvider';
+import React, { useState, useContext, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import StarRating from "../../misc/StarRating";
+import { ProductContext } from "../../../contexts/ProductProvider";
+import Reviews from "../../misc/Reviews"
+import { ReviewProvider } from "../../../contexts/ReviewProvider";
 
 function Details() {
   const { id } = useParams();
   const { fetchSingleProduct } = useContext(ProductContext);
   const [counter, setCounter] = useState(1);
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState();
 
   const plusCounter = () => {
-    setCounter(prevCounter => prevCounter + 1);
+    setCounter((prevCounter) => prevCounter + 1);
   };
 
   const minusCounter = () => {
     if (counter > 1) {
-      setCounter(prevCounter => prevCounter - 1);
+      setCounter((prevCounter) => prevCounter - 1);
     }
   };
 
@@ -30,18 +30,16 @@ function Details() {
         const data = await fetchSingleProduct(id);
         setProduct(data);
       } catch (error) {
-        console.error('Error fetching product:', error);
+        console.error("Error fetching product:", error);
       }
     };
 
     fetchData();
-  }, [id]);
+  }, [fetchSingleProduct, id]);
 
-  if (product === null) {
+  if (product == null) {
     return <>loading..</>;
   }
-
-  console.log(product);
 
   return (
     <div className="container px-4 mx-auto">
@@ -53,16 +51,16 @@ function Details() {
         />
       </div>
       <div className="pt-4">
-        <div className='flex gap-24'>
+        <div className="flex gap-24">
           <h2 className="font-bold">{product.name}</h2>
           <button className="link">
             <i className="fa-regular fa-heart opacity-50"></i>
           </button>
         </div>
-        <StarRating rating={product.starRating} />
-        <div className='flex gap-48'>
+        <StarRating rating={product.rating} />
+        <div className="flex gap-48">
           <p>${product.price}</p>
-          <div className='flex gap-2'>
+          <div className="flex gap-2">
             <button onClick={minusCounter}>-</button>
             <span>{counter}</span>
             <button onClick={plusCounter}>+</button>
@@ -93,11 +91,13 @@ function Details() {
             ))}
           </div>
         </div>
-        <div className='mt-5'>
+        <div className="mt-5">
           <p>Description</p>
-          <p className='text-zinc-400 font-light'>{product.description}</p>
+          <p className="text-zinc-400 font-light">{product.description}</p>
         </div>
-        <button className='bg-black hover:bg-blue-600 text-white w-80 py-2 rounded-3xl mt-11'>+ ADD TO CART</button>
+        <button className="bg-black hover:bg-blue-600 text-white w-80 py-2 rounded-3xl mt-11">
+          + ADD TO CART
+        </button>
 
         <ReviewProvider productId={id}>
           <Reviews />
