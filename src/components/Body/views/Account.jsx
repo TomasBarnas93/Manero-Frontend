@@ -1,12 +1,16 @@
+
 import { React, useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import MenuRow from '../components/MenuRow';
 import Login from './Login';
+import SignoutConfirm from '../components/SignoutConfirm';
 
 const Account = () => {
   const navigate = useNavigate();
 
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+  
   const [authenticated, setAuthenticated] = useState(false);
 
   const { isAuthenticated } = useContext(AuthContext);
@@ -17,9 +21,19 @@ const Account = () => {
     });
   }, []);
 
-  const handleSignOut = () => {
-    // Handle sign out logic here
+  const handleConfirmSignOut = () => {
+    
     navigate('/logout'); // Redirect to the login page after sign out
+  };
+  
+  const handleCancelSignOut = () => {
+    setShowConfirmDialog(false);
+  };
+  
+  const handleSignOut = () => {
+    setShowConfirmDialog(true);
+    // Handle sign out logic here
+    //navigate('/logout'); // Redirect to the login page after sign out
   };
 
   if(authenticated == false){
@@ -32,6 +46,12 @@ const Account = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen">
+      {showConfirmDialog && (
+      <SignoutConfirm
+        onConfirm={handleConfirmSignOut}
+        onCancel={handleCancelSignOut}
+      />
+    )}
       <div className="max-w-lg w-full bg-white rounded-lg shadow-lg">
         <div className="p-6">
           <div className="flex flex-col items-center mb-3">
