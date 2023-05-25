@@ -1,9 +1,19 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import MenuRow from '../components/MenuRow';
+
+import {React, useContext, useEffect, useState} from 'react'
+import { AuthContext } from '../../../contexts/AuthProvider'
+import { useNavigate } from "react-router-dom";
 
 const Account = () => {
   const navigate = useNavigate();
+
+  const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    isAuthenticated().then((result) => {
+      setAuthenticated(result);
+    });
+    
+  }, []);
 
   const handleSignOut = () => {
     // Handle sign out logic here
