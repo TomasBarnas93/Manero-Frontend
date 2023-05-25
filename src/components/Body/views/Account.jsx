@@ -1,7 +1,7 @@
 
-import React, {useContext, useEffect, useState} from 'react'
-import { AuthContext } from '../../../contexts/AuthProvider'
-import { useNavigate } from "react-router-dom";
+import { React, useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../../contexts/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 import MenuRow from '../components/MenuRow';
 import Login from './Login';
 import SignoutConfirm from '../components/SignoutConfirm';
@@ -19,7 +19,6 @@ const Account = () => {
     isAuthenticated().then((result) => {
       setAuthenticated(result);
     });
-    
   }, []);
 
   const handleConfirmSignOut = () => {
@@ -41,6 +40,10 @@ const Account = () => {
     return <Login />
   }
 
+  const handleMenuItemClick = (url) => {
+    navigate(url);
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen">
       {showConfirmDialog && (
@@ -60,13 +63,44 @@ const Account = () => {
           </div>
           <div className="border-t border-gray-300 w-full"></div>
           <div className="flex flex-col space-y-2">
-            <MenuRow title="Order History" iconClass="fas fa-shopping-cart" removeTopMargin addBottomBorder fullWidth />
-            <MenuRow title="Payment Method" iconClass="fas fa-credit-card" addBottomBorder fullWidth />
-            <MenuRow title="My Address" iconClass="fas fa-map-marker-alt" addBottomBorder fullWidth />
-            <MenuRow title="My Promocodes" iconClass="fas fa-tags" addBottomBorder fullWidth />
+            <MenuRow
+              title="Order History"
+              iconClass="fas fa-shopping-cart"
+              removeTopMargin
+              addBottomBorder
+              fullWidth
+              onClick={() => handleMenuItemClick('/order-history')}
+            />
+            <MenuRow
+              title="Payment Method"
+              iconClass="fas fa-credit-card"
+              addBottomBorder
+              fullWidth
+              onClick={() => handleMenuItemClick('/payment-method')}
+            />
+            <MenuRow
+              title="My Address"
+              iconClass="fas fa-map-marker-alt"
+              addBottomBorder
+              fullWidth
+              onClick={() => handleMenuItemClick('/my-address')}
+            />
+            <MenuRow
+              title="My Promocodes"
+              iconClass="fas fa-tags"
+              addBottomBorder
+              fullWidth
+              onClick={() => handleMenuItemClick('/my-promocodes')}
+            />
             <div className="flex items-center h-12 py-2 border-b border-gray-300 w-full">
-            <i i className="fas fa-sign-out-alt text-black-500 mr-2"></i>
-            <button className="text-base font-normal text-left ml-3" onClick={handleSignOut}>Sign Out</button>
+              <i i className="fas fa-sign-out-alt text-black-500 mr-2"></i>
+              <button
+                className="text-base font-normal text-left ml-3"
+                onClick={handleSignOut}
+                style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '0' }}
+              >
+                Sign Out
+              </button>
             </div>
           </div>
         </div>
