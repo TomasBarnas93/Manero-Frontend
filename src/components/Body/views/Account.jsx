@@ -23,18 +23,14 @@ const Account = () => {
           </div>
           <div className="border-t border-gray-300 w-full"></div>
           <div className="flex flex-col space-y-2">
-            <MenuRow title="Order History" removeTopMargin addBottomBorder fullWidth />
-            <MenuRow title="Payment Method" addBottomBorder fullWidth />
-            <MenuRow title="My Address" addBottomBorder fullWidth />
-            <MenuRow title="My Promocodes" addBottomBorder fullWidth />
-          </div>
-          <div className="flex justify-center py-3">
-            <button
-              className="px-3 py-2 text-base font-semibold text-red-500 bg-transparent border border-red-500 rounded-md hover:bg-red-500 hover:text-white focus:outline-none"
-              onClick={handleSignOut}
-            >
-              Sign Out
-            </button>
+            <MenuRow title="Order History" iconClass="fas fa-shopping-cart" removeTopMargin addBottomBorder fullWidth />
+            <MenuRow title="Payment Method" iconClass="fas fa-credit-card" addBottomBorder fullWidth />
+            <MenuRow title="My Address" iconClass="fas fa-map-marker-alt" addBottomBorder fullWidth />
+            <MenuRow title="My Promocodes" iconClass="fas fa-tags" addBottomBorder fullWidth />
+            <div className="flex items-center h-12 py-2 border-b border-gray-300 w-full">
+  <i className="fas fa-sign-out-alt text-black-500 mr-2"></i>
+  <p className="text-base font-normal text-left ml-3" onClick={handleSignOut}>Sign Out</p>
+</div>
           </div>
         </div>
       </div>
