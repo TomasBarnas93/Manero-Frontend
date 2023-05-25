@@ -1,17 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ProductContext } from "../../../contexts/ProductProvider";
 import ProductItem from "./ProductItem";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const BestSellers = () => {
   const { products } = useContext(ProductContext);
   const [numOfProducts, setNumOfProducts] = useState(4);
-  const navigate = useNavigate();
-  const bestTag = "Best";
-
-  const navigateToAllBestSellers = () => {
-    navigate(`/tag/${bestTag}`);
-  };
+  const tag = "Best";
 
   useEffect(() => {
     const updateProductCount = () => {
@@ -34,7 +29,7 @@ const BestSellers = () => {
   }, []);
 
   const filteredProducts = products.filter((product) =>
-    product.tags.some((tag) => tag.name === bestTag)
+    product.tags.some((bestTag) => bestTag.name === tag)
   );
 
   const limitedProducts = filteredProducts.slice(0, numOfProducts);
@@ -43,7 +38,7 @@ const BestSellers = () => {
     <div className="mt-5 mb-5 ml-2">
       <div className="flex justify-between pr-5">
         <h2 className="font-bold">Best Sellers</h2>
-        <button onClick={navigateToAllBestSellers}>view all&gt;</button>
+        <Link to={`/${tag}`}>view all&gt;</Link>
       </div>
       <ul className="flex gap-6">
         {limitedProducts.map((product) => (
