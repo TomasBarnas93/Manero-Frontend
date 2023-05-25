@@ -1,8 +1,5 @@
-import {React, useContext} from 'react'
-import Login from './Login'
-import Register from './Register'
+import {React, useContext, useEffect, useState} from 'react'
 import { AuthContext } from '../../../contexts/AuthProvider'
-import Home from './Home'
 import { useNavigate } from "react-router-dom";
 
 const Account = () => {
@@ -10,16 +7,25 @@ const Account = () => {
   const navigate = useNavigate();
   const { isAuthenticated } = authContext;
 
-  if(!isAuthenticated){
+  const [authenticated, setAuthenticated] = useState(false);
 
-    navigate('/login');
+  useEffect(() => {
+    isAuthenticated().then((result) => {
+      setAuthenticated(result);
+    });
+    
+  }, []);
+
+
+
+  if(authenticated){
+    return(<>logged in</>)
   }
   else{
-    return (
-      // Here you place account info
-      <Home />
-    )
+    return(<>not logged in</>)
   }
+
+
 }
 
 export default Account

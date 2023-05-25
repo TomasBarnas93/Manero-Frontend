@@ -1,8 +1,9 @@
 const loginUrl = 'https://manero-backend-group-3.azurewebsites.net/v1/api/Auth/Login';
 const registerUrl = 'https://manero-backend-group-3.azurewebsites.net/v1/api/Auth/Register';
+const authUrl = 'https://manero-backend-group-3.azurewebsites.net/v1/api/Auth/validatetoken';
 //const apiKey = "";
 
-const handleRegisterService = async (firstName, lastName, email, password) => {
+export const handleRegisterService = async (firstName, lastName, email, password) => {
 
     const user = {
       firstName,
@@ -31,7 +32,7 @@ const handleRegisterService = async (firstName, lastName, email, password) => {
 
 } 
 
-const handleLoginService = async (email, password, rememberMe) => {
+export const handleLoginService = async (email, password, rememberMe) => {
   const user = {
     email: email,
     password: password,
@@ -61,10 +62,25 @@ const handleLoginService = async (email, password, rememberMe) => {
   }
 };
 
-const handleLogoutService = async () => {
+export const handleLogoutService = async () => {
   localStorage.removeItem('accessToken');
 };
 
+export const CheckJWTToken = async () => {
 
+  const accessToken = localStorage.getItem('accessToken');
+  let result = await fetch(authUrl, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${accessToken}`,
+    },
+  }).then((response) => {
+    console.log(response.ok);
+    return response.ok;
+  });
 
-export { handleRegisterService, handleLoginService, handleLogoutService };
+  return result;
+
+};
+

@@ -1,14 +1,11 @@
-import { createContext, useState } from "react";
-import { handleRegisterService, handleLoginService, handleLogoutService } from "../components/services/AuthenticationService";
+import { createContext } from "react";
+import { handleRegisterService, handleLoginService, handleLogoutService, CheckJWTToken } from "../components/services/AuthenticationService";
 
 
 export const AuthContext = createContext();
 
 
 export const AuthProvider = (props) => {
-
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
 
   const handleRegister = async (firstName, lastName, email, password) => {
     return await handleRegisterService(firstName, lastName, email, password);
@@ -17,15 +14,16 @@ export const AuthProvider = (props) => {
   const handleLogin = async (email, password, rememberMe) => {
     let result = await handleLoginService(email, password, rememberMe);
 
-    setIsAuthenticated(result);
-
     return result;
   };
 
   const handleLogout = async () => {
-    setIsAuthenticated(false);
     return await handleLogoutService();
   };
+
+  const isAuthenticated = async () => {
+    return await CheckJWTToken();
+  }
 
 
 
