@@ -12,6 +12,7 @@ const Tag = ({ children }) => {
     product.tags.some((productTag) => productTag.name === tagName)
   );
 
+  // Sort
   const [sortOption, setSortOption] = useState("");
 
   const handleSortChange = (event) => {
@@ -24,31 +25,34 @@ const Tag = ({ children }) => {
     sortedProductByTag.sort((a, b) => a.price - b.price);
   } else if (sortOption === "rating lowest") {
     sortedProductByTag.sort((a, b) => a.rating - b.rating);
-  } else if (sortOption === "price highest"){
-    sortedProductByTag.sort((a,b) => b.price - a.price);
-  } else if (sortOption === "rating highest"){
-    sortedProductByTag.sort((a,b) => b.rating - a.rating);
+  } else if (sortOption === "price highest") {
+    sortedProductByTag.sort((a, b) => b.price - a.price);
+  } else if (sortOption === "rating highest") {
+    sortedProductByTag.sort((a, b) => b.rating - a.rating);
   }
+  // Sort end
 
   return (
     <>
       <h1 className="font-bold text-center mt-5 mb-5 ml-2">
         {tagName} {children}
       </h1>
-      <div className="m-5 max-w-7xl">
-        <div className="flex m-5 justify-between">
-          <Link to={`/filters`}>
-            <div className="flex gap-2">
-              <i className="fa-light fa-filter fa-xl"></i>
-              <p>Filters</p>
-            </div>
-          </Link>
-          <div className="flex gap-2">
-            <p>Sorting by</p>
+      <div className="m-auto max-w-7xl">
+        <div className="flex flex-col m-5 justify-between items-center md:flex-row">
+          <div className="mb-8 md:mb-5">
+            <Link to={`/filters`}>
+              <div className="flex gap-2 mt-4">
+                <i className="fa-light fa-filter fa-xl"></i>
+                <p>Filters</p>
+              </div>
+            </Link>
+          </div>
+          <div className="flex gap-2 mb-4">
+            <p className="mr-2">Sorting by</p>
             <select
               value={sortOption}
               onChange={handleSortChange}
-              className="border border-gray-300 rounded-md px-1 py-1"
+              className="border border-gray-300 rounded-md px-1 py-1 md:px-1"
             >
               <option value=""></option>
               <option value="price lowest">Price lowest</option>
@@ -58,7 +62,7 @@ const Tag = ({ children }) => {
             </select>
           </div>
         </div>
-        <ul className="flex flex-wrap gap-6">
+        <ul className="flex flex-wrap justify-center gap-6">
           {sortedProductByTag.map((product) => (
             <li key={product.id} className="w-full md:w-auto">
               <ProductItem product={product} />
