@@ -1,17 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ProductContext } from "../../../contexts/ProductProvider";
 import ProductItem from "./ProductItem";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Featured = () => {
   const { products } = useContext(ProductContext);
   const [numOfProducts, setNumOfProducts] = useState(4);
-  const navigate = useNavigate();
-  // const featuredTagId = "ace5bd5b-9085-4daa-321e-08db5c68e9d9";
-
-  const navigateToAllFeatured = () => {
-    navigate(`/tag/Featured`);
-  };
+  const tag = "Featured";
 
   useEffect(() => {
     const updateProductCount = () => {
@@ -32,19 +27,17 @@ const Featured = () => {
       window.removeEventListener("resize", updateProductCount);
     };
   }, []);
-;
-const filteredProducts = products.filter((product) =>
-  product.tags.some((tag) => tag.name === "Featured")
-);
+  const filteredProducts = products.filter((product) =>
+    product.tags.some((featuredTag) => featuredTag.name === tag)
+  );
 
-
-const limitedProducts = filteredProducts.slice(0, numOfProducts);
+  const limitedProducts = filteredProducts.slice(0, numOfProducts);
 
   return (
     <div className="mt-5 mb-5 ml-2">
       <div className="flex justify-between pr-5">
         <h2 className="font-bold">Featured</h2>
-        <button onClick={() => navigateToAllFeatured("Featured")}>view all&gt;</button>
+        <Link to={`/${tag}`}>view all&gt;</Link>
       </div>
       <ul className="flex gap-6">
         {limitedProducts.map((product) => (
