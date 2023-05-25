@@ -22,7 +22,12 @@ const handleRegisterService = async (firstName, lastName, email, password) => {
     if (result.status === 201) {
         const data = await result.json();
         console.log(data);
+        return true;
     }
+    
+    
+    return false;
+    
 
 } 
 
@@ -32,6 +37,8 @@ const handleLoginService = async (email, password, rememberMe) => {
     password: password,
     rememberMe: rememberMe ? true : false,
   };
+
+  console.log(user);
 
   try {
     const result = await fetch(loginUrl, {
@@ -45,15 +52,19 @@ const handleLoginService = async (email, password, rememberMe) => {
     if (result.status === 200) {
       const accessToken = await result.text();
       localStorage.setItem('accessToken', accessToken);
-      console.log(accessToken);
+      return true;
     } else {
-      throw new Error('Invalid credentials');
+      return false;
     }
   } catch (error) {
     console.log(error);
   }
 };
 
+const handleLogoutService = async () => {
+  localStorage.removeItem('accessToken');
+};
 
 
-export { handleRegisterService, handleLoginService };
+
+export { handleRegisterService, handleLoginService, handleLogoutService };

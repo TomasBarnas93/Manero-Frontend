@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import InputBox from '../../misc/InputBox';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate  } from 'react-router-dom';
 import Icon from '../../misc/Icon';
 import { useContext } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider';
@@ -11,27 +11,63 @@ const Login = () => {
   const [rememberMe, setRememberMe] = useState(false);
 
   const authContext = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const { handleLogin } = authContext;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await handleLogin(email, password, rememberMe);
+
+    console.log(email, password, rememberMe);
+    var result = await handleLogin(email, password, rememberMe);
+
+    console.log(result);
+
+    if (result) {
+      setEmail('');
+      setPassword('');
+      setRememberMe(false);
+
+      navigate('/');
+
+    }
+    else {
+      
+      let emailInput = document.getElementById('email');
+      let passwordInput = document.getElementById('password');
+      var errorMessage = document.getElementById('errorMessage');
+      
+      emailInput.classList.add('border-red-500');
+      passwordInput.classList.add('border-red-500');
+      errorMessage.innerHTML = 'Invalid email or password';
+      setPassword('');
+    }
   };
-  
+
+  useEffect(() => {
+    let emailInput = document.getElementById('email');
+    let passwordInput = document.getElementById('password');
+    var errorMessage = document.getElementById('errorMessage');
+
+    emailInput.classList.remove('border-red-500');
+    passwordInput.classList.remove('border-red-500');
+    errorMessage.innerHTML = '';
+  }, [email, password]);
 
   return (
     <div className='container px-4 lg: mx-auto'>
       <div className='text-md text-center'>Sign in</div>
 
-      <div class='relative h-8 mt-14'>
-        <div class='absolute left-1/2 top-0 bg-black w-[1px] h-full'></div>
+      <div className='relative h-8 mt-14'>
+        <div className='absolute left-1/2 top-0 bg-black w-[1px] h-full'></div>
       </div>
       <div className='text-3xl text-center mt-2 font-medium'>Welcome Back!</div>
       <p className='text-center mt-4 font-light'>Sign in to continue</p>
-      <form>
+
+      <form method='post'>
         <InputBox classes='' label='Email' type='email' id='email' name='email' placeholder='Enter your email' value={email} onChange={(e) => setEmail(e.target.value)} required={true}/>
         <InputBox label='Password' type='password' id='password' name='password' placeholder='Enter your password' value={password} onChange={(e) => setPassword(e.target.value)} required={true}/>
-
+        <span id='errorMessage' className='text-red-600 text-sm ml-3'></span>
         <div className='flex justify-between'>
           <div className='text-gray-600'>
             <input className='' type='checkbox' id='rememberMe' checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)}/>
