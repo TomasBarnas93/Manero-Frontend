@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { getProductService, getSingleProductService } from '../components/services/GetProductsService';
+import { getProductService } from '../components/services/GetProductsService';
 
 const ProductContext = createContext();
 
@@ -31,7 +31,7 @@ const ProductProvider = ({ children }) => {
   };
 
   return (
-    <ProductContext.Provider value={{products, fetchSingleProduct}}>
+    <ProductContext.Provider value={{ products, fetchSingleProduct }}>
       {children}
     </ProductContext.Provider>
   );
