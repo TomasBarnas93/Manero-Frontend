@@ -30,7 +30,7 @@ function App() {
   }
 
   if (!hasVisitedBefore) {
-    return (
+  return (
       <div>
       <SplashScreen onComplete={() => setHasVisitedBefore(true)} />
       </div>

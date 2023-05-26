@@ -7,7 +7,7 @@ import Login from './Login';
 const Account = () => {
   const navigate = useNavigate();
 
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState();
 
   const { isAuthenticated } = useContext(AuthContext);
 
@@ -22,7 +22,7 @@ const Account = () => {
     navigate('/logout'); // Redirect to the login page after sign out
   };
 
-  if(authenticated == false){
+  if(authenticated === false){
     return <Login />
   }
 
