@@ -1,6 +1,15 @@
 const getProductService = async () => {
   try {
-    const response = await fetch('https://manero-backend-group-3.azurewebsites.net/v1/api/products');
+    const response = await fetch('https://manero-backend-group-3.azurewebsites.net/v1/api/products', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      },
+    });
+
+    console.log(localStorage.getItem('accessToken'));
+
     const data = await response.json();
     return data;
   } catch (error) {
@@ -20,4 +29,27 @@ const getSingleProductService = async ({id}) => {
   }
 };
 
-export { getProductService, getSingleProductService };
+const favoriteItemService = async ({id}) => {
+  let productId = {
+    productId: id,
+  };
+
+  try {
+    const response = await fetch("https://manero-backend-group-3.azurewebsites.net/v1/api/Wish", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      },
+      body: JSON.stringify(productId)
+    });
+
+    return response.ok;
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    throw error;
+  }
+
+};
+
+export { getProductService, getSingleProductService, favoriteItemService };

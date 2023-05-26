@@ -12,7 +12,8 @@ const Logout = () => {
 
     handleLogout();
 
-    navigate('/home');
+    navigate('/');
+
 }
 
 export default Logout

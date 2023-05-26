@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { getProductService } from '../components/services/GetProductsService';
+import { favoriteItemService, getProductService } from '../components/services/GetProductsService';
 
 const ProductContext = createContext();
 
@@ -30,8 +30,12 @@ const ProductProvider = ({ children }) => {
     }
   };
 
+  const addToFavorite = async (id) => {
+    return await favoriteItemService({id});
+  };
+
   return (
-    <ProductContext.Provider value={{ products, fetchSingleProduct }}>
+    <ProductContext.Provider value={{ products, fetchSingleProduct, addToFavorite }}>
       {children}
     </ProductContext.Provider>
   );
