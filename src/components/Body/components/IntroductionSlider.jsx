@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const IntroductionSlider = () => {
+const IntroductionSlider = ({ onComplete }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isCompleted, setIsCompleted] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const hasVisitedBefore = localStorage.getItem("hasVisitedBefore");
+    const hasVisitedBefore = localStorage.getItem('hasVisitedBefore');
     if (hasVisitedBefore) {
       setIsCompleted(true);
     }
@@ -19,8 +19,9 @@ const IntroductionSlider = () => {
 
   const navigateToAcc = () => {
     setIsCompleted(true);
-    localStorage.setItem("hasVisitedBefore", true);
-    navigate("/account");
+    localStorage.setItem('hasVisitedBefore', 'true');
+    onComplete && onComplete();
+    navigate('/account');
   };
 
   const renderStepContent = () => {
@@ -28,43 +29,43 @@ const IntroductionSlider = () => {
       case 1:
         return (
           <div className="text-center mt-7">
-            <div class="relative h-8">
-              <div class="absolute left-1/2 top-0 bg-black w-[1px] h-full"></div>
-            </div>
-            <h1 className="text-4xl font-semibold mb-4 mt-4">
-              Welcome to <br /> Manero!
-            </h1>
-            <p className="text-gray-500">
-              This is the first step of the introduction.
-            </p>
-            <button
-              className="bg-black hover:bg-blue-600 text-white w-72 py-3 rounded-3xl mt-11"
-              onClick={navigateToAcc}
-            >
-              Get Started
-            </button>
+          <div class="relative h-8">
+            <div class="absolute left-1/2 top-0 bg-black w-[1px] h-full"></div>
           </div>
-        );
+          <h1 className="text-4xl font-semibold mb-4 mt-4">
+            Welcome to <br /> Manero!
+          </h1>
+          <p className="text-gray-500">
+            This is the first step of the introduction.
+          </p>
+          <button
+            className="bg-black hover:bg-blue-600 text-white w-72 py-3 rounded-3xl mt-11"
+            onClick={navigateToAcc}
+          >
+            Get Started
+          </button>
+        </div>
+      );
       case 2:
         return (
           <div className="text-center mt-7">
-            <div class="relative h-8">
-              <div class="absolute left-1/2 top-0 bg-black w-[1px] h-full"></div>
-            </div>
-            <h1 className="text-4xl font-semibold mb-4 mt-4">
-              Easy Track <br /> Order!
-            </h1>
-            <p className="text-gray-500">
-              This is the second step of the introduction.
-            </p>
-            <button
-              className="bg-black hover:bg-blue-600 text-white w-72 py-3 rounded-3xl mt-11"
-              onClick={navigateToAcc}
-            >
-              Get Started
-            </button>
+          <div class="relative h-8">
+            <div class="absolute left-1/2 top-0 bg-black w-[1px] h-full"></div>
           </div>
-        );
+          <h1 className="text-4xl font-semibold mb-4 mt-4">
+            Easy Track <br /> Order!
+          </h1>
+          <p className="text-gray-500">
+            This is the second step of the introduction.
+          </p>
+          <button
+            className="bg-black hover:bg-blue-600 text-white w-72 py-3 rounded-3xl mt-11"
+            onClick={navigateToAcc}
+          >
+            Get Started
+          </button>
+        </div>
+      );
       case 3:
         return (
           <div className="text-center mt-7">
@@ -91,7 +92,7 @@ const IntroductionSlider = () => {
   };
 
   if (isCompleted) {
-    return <div>{/* Rendera huvudapplikationen */}</div>;
+    return null;
   }
 
   return (
@@ -124,5 +125,4 @@ const IntroductionSlider = () => {
     </div>
   );
 };
-
 export default IntroductionSlider;

@@ -3,10 +3,10 @@ import { ProductContext } from "../../../contexts/ProductProvider";
 import ProductItem from "./ProductItem";
 import { Link } from "react-router-dom";
 
-const BestSellers = () => {
+const Featured = () => {
   const { products } = useContext(ProductContext);
   const [numOfProducts, setNumOfProducts] = useState(4);
-  const tagName = "Best";
+  const tag = "Featured";
 
   useEffect(() => {
     const updateProductCount = () => {
@@ -27,9 +27,8 @@ const BestSellers = () => {
       window.removeEventListener("resize", updateProductCount);
     };
   }, []);
-
   const filteredProducts = products.filter((product) =>
-    product.tags.some((bestTag) => bestTag.name === tagName)
+    product.tags.some((featuredTag) => featuredTag.name === tag)
   );
 
   const limitedProducts = filteredProducts.slice(0, numOfProducts);
@@ -37,8 +36,8 @@ const BestSellers = () => {
   return (
     <div className="mt-5 mb-5 ml-2">
       <div className="flex justify-between pr-5">
-        <h2 className="font-bold">Best Sellers</h2>
-        <Link to={`/${tagName}`} children="Best Sellers">view all&gt;</Link>
+        <h2 className="font-bold">Featured</h2>
+        <Link to={`/${tag}`} children="Featured">view all&gt;</Link>
       </div>
       <ul className="flex gap-6">
         {limitedProducts.map((product) => (
@@ -51,4 +50,4 @@ const BestSellers = () => {
   );
 };
 
-export default BestSellers;
+export default Featured;

@@ -1,7 +1,7 @@
 import React from 'react';
 import ShowCase from '../components/ShowCase';
 import SmallShowCase from '../components/SmallShowCase';
-import CollectionProducts from '../components/CollectionProducts';
+import Featured from '../components/Featured';
 import BestSellers from '../components/BestSellers';
 import Carousel from '../components/Carousel'
 import { ProductProvider } from '../../../contexts/ProductProvider';
@@ -13,7 +13,7 @@ const Home = () => {
       <Carousel/>
       <BestSellers />
       <SmallShowCase />
-      <CollectionProducts title="Featured Products" api="featured" />
+      <Featured />
     </ProductProvider>
   );
 };
