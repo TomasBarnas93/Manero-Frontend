@@ -1,17 +1,11 @@
 import {React, useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import StarRating from "../../misc/StarRating";
-import { ProductContext } from "../../../contexts/ProductProvider";
+import HeartIcon from "./HeartIcon";
 
 
 
 const ProductItem = ({ product }) => {
-
-  console.log("product", product);
-
-  const { addToFavorite } = useContext(ProductContext);
-  
-
 
   const navigate = useNavigate();
 
@@ -19,20 +13,7 @@ const ProductItem = ({ product }) => {
     navigate(`/details/${product.id}`);
   };
 
-  const submitFavorite = () => {
 
-    if (!localStorage.getItem("accessToken")) {
-      navigate("/login");
-    }
-
-
-
-    var result = addToFavorite(product.id);
-
-    if(result === true){
-      alert("Added to favorites");
-    }
-  };
 
   return (
     <>
@@ -45,9 +26,7 @@ const ProductItem = ({ product }) => {
           onClick={navigateToDetails}
         />
         <div className="absolute top-0 right-0 m-2 flex flex-col">
-          <button onClick={() => submitFavorite()} className="link rounded-full p-1 px-2 hover:bg-gray-300">
-            <i className="fa-regular fa-heart opacity-50"></i>
-          </button>
+          <HeartIcon id={product.id} liked={product.liked} />
           <button className="link rounded-full p-1 px-2 hover:bg-gray-300">
             <i className="fa-regular fa-bag-shopping opacity-50"></i>
           </button>

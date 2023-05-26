@@ -6,6 +6,7 @@ import Tag from "./views/Tag"
 import Login from "./views/Login";
 import Register from "./views/Register";
 import Logout from "./views/Logout";
+import Favorites from "./views/Favorites";
 import Contact from "./views/Contact";
 
 const Body = () => {
@@ -15,7 +16,7 @@ const Body = () => {
         <Route exact path="/" element={<Home />} />
         <Route path="/search" element={<Home />} />
         <Route path="/cart" element={<Home />} />
-        <Route path="/favorites" element={<Home />} />
+        <Route path="/favorites" element={<Favorites />} />
         <Route path="/account" element={<Account />} />
         <Route path="/contacts" element={<Contact />} />
         <Route path="/details/:id" element={<Details />} />

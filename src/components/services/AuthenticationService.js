@@ -22,7 +22,6 @@ export const handleRegisterService = async (firstName, lastName, email, password
     })
     if (result.status === 201) {
         const data = await result.json();
-        console.log(data);
         return true;
     }
     
@@ -39,7 +38,6 @@ export const handleLoginService = async (email, password, rememberMe) => {
     rememberMe: rememberMe ? true : false,
   };
 
-  console.log(user);
 
   try {
     const result = await fetch(loginUrl, {
@@ -76,7 +74,6 @@ export const CheckJWTToken = async () => {
       Authorization: `Bearer ${accessToken}`,
     },
   }).then((response) => {
-    console.log(response.ok);
     return response.ok;
   });
 
