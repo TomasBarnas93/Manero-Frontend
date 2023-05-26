@@ -7,6 +7,8 @@ import Login from "./views/Login";
 import Register from "./views/Register";
 import Logout from "./views/Logout";
 import Contact from "./views/Contact";
+import Filter from "./views/Filter";
+
 
 const Body = () => {
   return (
@@ -23,6 +25,7 @@ const Body = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/filter" element={<Filter />} />
       </Routes>
     </main>
   );
