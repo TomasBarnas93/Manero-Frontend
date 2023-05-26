@@ -8,7 +8,9 @@ import Register from "./views/Register";
 import Logout from "./views/Logout";
 import Favorites from "./views/Favorites";
 import Contact from "./views/Contact";
+import Filter from "./views/Filter";
 import ShoppingCart from "./components/ShoppingCart";
+
 
 const Body = () => {
   return (
@@ -25,6 +27,7 @@ const Body = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/filter" element={<Filter />} />
         <Route path="/shoppingCart" element={<ShoppingCart />} />
       </Routes>
     </main>
