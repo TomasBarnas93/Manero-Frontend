@@ -18,10 +18,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(email, password, rememberMe);
     var result = await handleLogin(email, password, rememberMe);
-
-    console.log(result);
 
     if (result) {
       setEmail('');

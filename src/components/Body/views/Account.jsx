@@ -8,11 +8,8 @@ import SignoutConfirm from '../components/SignoutConfirm';
 
 const Account = () => {
   const navigate = useNavigate();
-
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
-  
   const [authenticated, setAuthenticated] = useState(false);
-
   const { isAuthenticated } = useContext(AuthContext);
 
   useEffect(() => {
@@ -36,7 +33,7 @@ const Account = () => {
     //navigate('/logout'); // Redirect to the login page after sign out
   };
 
-  if(authenticated == false){
+  if(authenticated === false){
     return <Login />
   }
 

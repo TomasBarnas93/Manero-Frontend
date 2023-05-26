@@ -6,8 +6,10 @@ import Tag from "./views/Tag"
 import Login from "./views/Login";
 import Register from "./views/Register";
 import Logout from "./views/Logout";
+import Favorites from "./views/Favorites";
 import Contact from "./views/Contact";
 import Filter from "./views/Filter";
+import ShoppingCart from "./components/ShoppingCart";
 
 
 const Body = () => {
@@ -17,7 +19,7 @@ const Body = () => {
         <Route exact path="/" element={<Home />} />
         <Route path="/search" element={<Home />} />
         <Route path="/cart" element={<Home />} />
-        <Route path="/favorites" element={<Home />} />
+        <Route path="/favorites" element={<Favorites />} />
         <Route path="/account" element={<Account />} />
         <Route path="/contacts" element={<Contact />} />
         <Route path="/details/:id" element={<Details />} />
@@ -26,6 +28,7 @@ const Body = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/filter" element={<Filter />} />
+        <Route path="/shoppingCart" element={<ShoppingCart />} />
       </Routes>
     </main>
   );
