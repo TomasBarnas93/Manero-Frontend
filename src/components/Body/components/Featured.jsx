@@ -37,7 +37,7 @@ const Featured = () => {
     <div className="mt-5 mb-5 ml-2">
       <div className="flex justify-between pr-5">
         <h2 className="font-bold">Featured</h2>
-        <Link to={`/${tag}`}>view all&gt;</Link>
+        <Link to={`/${tag}`} children="Featured">view all&gt;</Link>
       </div>
       <ul className="flex gap-6">
         {limitedProducts.map((product) => (

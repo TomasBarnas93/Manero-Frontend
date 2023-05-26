@@ -7,6 +7,7 @@ import Login from "./views/Login";
 import Register from "./views/Register";
 import Logout from "./views/Logout";
 import Favorites from "./views/Favorites";
+import Contact from "./views/Contact";
 
 const Body = () => {
   return (
@@ -17,7 +18,7 @@ const Body = () => {
         <Route path="/cart" element={<Home />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/account" element={<Account />} />
-        <Route path="/contacts" element={<Home />} />
+        <Route path="/contacts" element={<Contact />} />
         <Route path="/details/:id" element={<Details />} />
         <Route path="/:tagName" element={<Tag />} />
         <Route path="/login" element={<Login />} />
