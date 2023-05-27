@@ -8,8 +8,11 @@ import SignoutConfirm from '../components/SignoutConfirm';
 
 const Account = () => {
   const navigate = useNavigate();
+
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+  
   const [authenticated, setAuthenticated] = useState(false);
+
   const { isAuthenticated } = useContext(AuthContext);
 
   useEffect(() => {
@@ -33,7 +36,7 @@ const Account = () => {
     //navigate('/logout'); // Redirect to the login page after sign out
   };
 
-  if(authenticated === false){
+  if(authenticated == false){
     return <Login />
   }
 
@@ -49,12 +52,14 @@ const Account = () => {
         onCancel={handleCancelSignOut}
       />
     )}
-      <div className="max-w-lg w-full bg-white rounded-lg shadow-lg">
+      <div className="max-w-lg w-full bg-white rounded-lg shadow-lg pb-9">
         <div className="p-6">
-          <div className="flex flex-col items-center mb-3">
-            <div className="w-32 h-32 rounded-full border-2 border-gray-500">
-              {/* Place the profile picture here */}
-            </div>
+          <div className="flex flex-col items-center mb-5">
+          <div class="w-40 h-40 rounded-full border-4 border-gray-300 relative">
+          <button class="block w-full h-full bg-transparent border-none" onClick={() => { window.location.href = '/edit-profile'; }}>
+          <i class="fas fa-pencil-alt absolute right-1 bottom-8 transform translate-x-1/4 translate-y-1/4 edit-icon bg-gray-300 rounded-full p-2"></i>
+          </button>
+          </div>
             <h1 className="text-lg font-semibold mt-3">John Doe</h1>
             <p className="text-gray-600 text-sm">john.doe@example.com</p>
           </div>
@@ -95,10 +100,12 @@ const Account = () => {
                 className="text-base font-normal text-left ml-3"
                 onClick={handleSignOut}
                 style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '0' }}
+                
               >
                 Sign Out
               </button>
             </div>
+            
           </div>
         </div>
       </div>
