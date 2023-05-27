@@ -10,7 +10,7 @@ import Favorites from "./views/Favorites";
 import Contact from "./views/Contact";
 import Filter from "./views/Filter";
 import ShoppingCart from "./components/ShoppingCart";
-
+import EditProfile from "./views/EditProfile";
 
 const Body = () => {
   return (
@@ -29,6 +29,7 @@ const Body = () => {
         <Route path="/logout" element={<Logout />} />
         <Route path="/filter" element={<Filter />} />
         <Route path="/shoppingCart" element={<ShoppingCart />} />
+        <Route path="/edit-profile" element={<EditProfile/>}/>
       </Routes>
     </main>
   );
