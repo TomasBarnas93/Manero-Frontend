@@ -23,7 +23,7 @@ const Body = () => {
         <Route path="/account" element={<Account />} />
         <Route path="/contacts" element={<Contact />} />
         <Route path="/details/:id" element={<Details />} />
-        <Route path="/:tagName" element={<Tag />} />
+        <Route path="/tag/:tagName" element={<Tag />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/logout" element={<Logout />} />
