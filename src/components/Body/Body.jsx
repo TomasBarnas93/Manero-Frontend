@@ -11,13 +11,14 @@ import Contact from "./views/Contact";
 import Filter from "./views/Filter";
 import ShoppingCart from "./components/ShoppingCart";
 import EditProfile from "./views/EditProfile";
+import Search from "./views/Search";
 
 const Body = () => {
   return (
     <main>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/search" element={<Home />} />
+        <Route path="/search/" element={<Search />} />
         <Route path="/cart" element={<Home />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/account" element={<Account />} />
