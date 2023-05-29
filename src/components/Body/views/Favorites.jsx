@@ -37,11 +37,13 @@ const Favorites = () => {
     }
 
   return (
-    <>
+    <div className="flex flex-col items-center">
+        <h1 className=' m-4 text-3xl'>Favorites</h1>
         {favorites.map((product) => (
             <WishListItem key={product.id} product={product} />
         ))}
-    </>
+    </div>
+
   )
 }
 

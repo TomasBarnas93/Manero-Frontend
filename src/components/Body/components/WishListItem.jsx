@@ -8,8 +8,8 @@ const WishListItem = (props) => {
 
 
   return (
-    <div className='w-full border-b flex p-3 max-h-44 max-w-2xl relative'>
-        <img src={product.imageUrl} alt="" className='w-1/3 border'/>
+    <div className='w-full border-b flex p-3 max-h-[20em] relative'>
+        <img src={product.imageUrl} alt="" className='w-1/3 max-w-[17em] border'/>
         <div className='flex flex-col pl-5'>
             <h2 className=''>{product.name}</h2>
             <p className='font-bold'>${product.price}</p>

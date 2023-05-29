@@ -80,7 +80,7 @@ export const Header = () => {
         <div className="border-t h-14 bottom-menu lg:hidden">
           <div className="grid grid-cols-5 py-3">
             <div className={`col-start-1 col-span-1 text-center`}>
-              <Icon to="/" button="text-xl" icon="fa-light fa-home-lg" />
+              <Icon to="/" button="text-xl" icon="fa-light fa-home-lg" active={activePageMobile}/>
             </div>
 
             <div className="col-start-2 col-span-1 text-center">
