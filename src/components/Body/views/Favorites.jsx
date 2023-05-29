@@ -23,7 +23,6 @@ const Favorites = () => {
             });
         }
     }, []);
-    console.log(favorites)
 
     if(favorites.length === 0){
         return (
@@ -32,8 +31,6 @@ const Favorites = () => {
             </div>
         )
     }
-    
-
 
   return (
     <>
