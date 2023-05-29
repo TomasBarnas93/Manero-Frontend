@@ -3,7 +3,7 @@ import { ReviewContext } from '../../contexts/ReviewProvider';
 import StarRating from './StarRating';
 
 function Reviews() {
-  const reviews = useContext(ReviewContext) || [];
+  const {reviews} = useContext(ReviewContext) || [];
   const reviewCount = reviews.length;
 
   return (

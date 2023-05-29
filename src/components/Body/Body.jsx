@@ -12,6 +12,7 @@ import Filter from "./views/Filter";
 import ShoppingCart from "./components/ShoppingCart";
 import EditProfile from "./views/EditProfile";
 import Search from "./views/Search";
+import AddReview from "./views/AddReview";
 
 const Body = () => {
   return (
@@ -31,6 +32,7 @@ const Body = () => {
         <Route path="/filter" element={<Filter />} />
         <Route path="/shoppingCart" element={<ShoppingCart />} />
         <Route path="/edit-profile" element={<EditProfile/>}/>
+        <Route path="/AddReview/:id" element={<AddReview />} />
       </Routes>
     </main>
   );
