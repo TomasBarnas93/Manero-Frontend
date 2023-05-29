@@ -30,6 +30,17 @@ const ProductProvider = ({ children }) => {
     }
   };
 
+  const fetchSearchProduct = async (searchCondition) => {
+    try {
+      const response = await fetch(`https://manero-backend-group-3.azurewebsites.net/v1/api/Product/search/${searchCondition}`);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching product:', error);
+      throw error;
+    }
+  };
+
   const adjustFavorite = async ({id, liked}) => {
 
 
@@ -47,7 +58,7 @@ const ProductProvider = ({ children }) => {
   };
 
   return (
-    <ProductContext.Provider value={{ products, fetchSingleProduct, adjustFavorite, getFavorites }}>
+    <ProductContext.Provider value={{ products, fetchSingleProduct, fetchSearchProduct, adjustFavorite, getFavorites }}>
       {children}
     </ProductContext.Provider>
   );
