@@ -32,8 +32,6 @@ const ProductProvider = ({ children }) => {
 
   const adjustFavorite = async ({id, liked}) => {
 
-    console.log(liked);
-
 
     if(liked === false){
       return await favoriteItemService({id});

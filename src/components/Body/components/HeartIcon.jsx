@@ -1,7 +1,7 @@
 import {useContext, useState, useEffect} from 'react'
 import { ProductContext } from '../../../contexts/ProductProvider'
 import { useNavigate } from 'react-router-dom'
-import { AuthContext } from '../../../contexts/AuthProvider'
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 
 const HeartIcon = ({id, liked}) => {
@@ -10,7 +10,7 @@ const HeartIcon = ({id, liked}) => {
     const { isAuthenticated } = useContext(AuthContext);
     const [likedState, setLikedState] = useState(false);
 
-
+    
 
     const navigate = useNavigate();
 
@@ -21,9 +21,9 @@ const HeartIcon = ({id, liked}) => {
 
     const submitFavorite = async () => {
 
-        let authRes = await isAuthenticated();
+        let authUser = await isAuthenticated();
 
-        if (authRes === false) {
+        if (authUser === false) {
           navigate("/login");
         }
 
