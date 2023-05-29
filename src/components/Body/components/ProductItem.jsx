@@ -16,7 +16,7 @@ const ProductItem = ({ product }) => {
 
 
   return (
-    <>
+    <div>
       <button className="relative" >
         <img
           className="rounded-lg shadow-md p-4 h-64 w-56"
@@ -44,7 +44,7 @@ const ProductItem = ({ product }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
