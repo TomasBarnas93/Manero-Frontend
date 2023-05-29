@@ -37,7 +37,7 @@ const AddReview = () => {
       productId: id,
     };
 
-    let result = addReview(review);
+    let result = await  addReview(review);
     setRating(0);
     setComment("");
 
@@ -51,7 +51,7 @@ const AddReview = () => {
       <h2 className="font-bold">Please Rate The Product!</h2>
 
       {/* Rating input */}
-      <input type="number" value={rating} onChange={(e) => setRating(parseInt(e.target.value))} />
+      <input type="number" value={rating}  max="5" min ="0" onChange={(e) => setRating(parseInt(e.target.value))} />
 
       {/* Comment input */}
       <textarea value={comment} onChange={(e) => setComment(e.target.value)} />
