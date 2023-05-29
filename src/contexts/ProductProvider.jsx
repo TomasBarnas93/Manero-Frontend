@@ -21,7 +21,14 @@ const ProductProvider = ({ children }) => {
 
   const fetchSingleProduct = async (id) => {
     try {
-      const response = await fetch(`https://manero-backend-group-3.azurewebsites.net/v1/api/Product/id/${id}`);
+      const response = await fetch(`https://manero-backend-group-3.azurewebsites.net/v1/api/Product/id/${id}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+          }
+        }
+      );
       const data = await response.json();
       return data;
     } catch (error) {
