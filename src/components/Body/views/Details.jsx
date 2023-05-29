@@ -43,6 +43,7 @@ function Details() {
     return <>loading..</>;
   }
 
+
   return (
     <div className="container px-4 mx-auto">
       <div>
@@ -55,7 +56,7 @@ function Details() {
       <div className="pt-4">
         <div className="flex gap-24">
           <h2 className="font-bold">{product.name}</h2>
-          <HeartIcon/>
+          <HeartIcon id={product.id} liked={product.liked} />
         </div>
         <StarRating rating={product.rating} />
         <div className="flex gap-48">
