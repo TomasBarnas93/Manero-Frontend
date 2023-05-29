@@ -6,7 +6,7 @@ import WishListItem from '../components/WishListItem'
 const Favorites = () => {
 
     const { getFavorites } = useContext(ProductContext);
-    const [favorites, setFavorites] = useState([]);
+    const [favorites, setFavorites] = useState();
 
     const navigate = useNavigate();
 
@@ -24,6 +24,10 @@ const Favorites = () => {
         }
     }, []);
 
+    if(favorites === undefined){
+        return (<>Loading ...</>);
+    }
+
     if(favorites.length === 0){
         return (
             <div className="flex justify-center items-center h-screen">
@@ -33,11 +37,13 @@ const Favorites = () => {
     }
 
   return (
-    <>
+    <div className="flex flex-col items-center">
+        <h1 className=' m-4 text-3xl'>Favorites</h1>
         {favorites.map((product) => (
             <WishListItem key={product.id} product={product} />
         ))}
-    </>
+    </div>
+
   )
 }
 

@@ -3,7 +3,6 @@ import { React, useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import MenuRow from '../components/MenuRow';
-import Login from './Login';
 import SignoutConfirm from '../components/SignoutConfirm';
 
 const Account = () => {
@@ -11,7 +10,7 @@ const Account = () => {
 
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState();
 
   const { isAuthenticated } = useContext(AuthContext);
 
@@ -37,12 +36,17 @@ const Account = () => {
   };
 
   if(authenticated == false){
-    return <Login />
+    navigate('/login');
   }
 
   const handleMenuItemClick = (url) => {
     navigate(url);
   };
+
+  if(authenticated === undefined){
+    return (<>Loading ...</>);
+  }
+  
 
   return (
     <div className="flex items-center justify-center min-h-screen">
