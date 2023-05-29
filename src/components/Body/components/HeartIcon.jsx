@@ -30,7 +30,6 @@ const HeartIcon = ({id, liked}) => {
         adjustFavorite({id, liked:likedState});
 
         setLikedState(!likedState);
-        
     };
 
   return (
