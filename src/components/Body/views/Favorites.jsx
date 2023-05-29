@@ -6,7 +6,7 @@ import WishListItem from '../components/WishListItem'
 const Favorites = () => {
 
     const { getFavorites } = useContext(ProductContext);
-    const [favorites, setFavorites] = useState([]);
+    const [favorites, setFavorites] = useState();
 
     const navigate = useNavigate();
 
@@ -23,6 +23,10 @@ const Favorites = () => {
             });
         }
     }, []);
+
+    if(favorites === undefined){
+        return (<>Loading ...</>);
+    }
 
     if(favorites.length === 0){
         return (
