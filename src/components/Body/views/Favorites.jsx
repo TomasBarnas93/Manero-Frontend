@@ -3,6 +3,7 @@ import { ProductContext } from '../../../contexts/ProductProvider'
 import { useNavigate } from 'react-router-dom'
 import WishListItem from '../components/WishListItem'
 
+
 const Favorites = () => {
 
     const { getFavorites } = useContext(ProductContext);
@@ -11,18 +12,16 @@ const Favorites = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-
         let token = localStorage.getItem('accessToken')
-
+    
         if (!token) {
             navigate('/login')
-        }
-        else {
+        } else {
             getFavorites().then((res) => {
                 setFavorites(res)
             });
         }
-    }, []);
+    }, [getFavorites, navigate]);
 
     if(favorites === undefined){
         return (<>Loading ...</>);
