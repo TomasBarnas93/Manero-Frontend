@@ -16,7 +16,7 @@ const HeartIcon = ({id, liked}) => {
 
     useEffect(() => {
         setLikedState(liked);
-    }, []);
+    }, [liked]);
 
 
     const submitFavorite = async () => {
