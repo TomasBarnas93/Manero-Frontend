@@ -7,6 +7,7 @@ const Search = () => {
   const { fetchSearchProduct } = useContext(ProductContext);
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const { products } = useContext(ProductContext);
 
   const handleSearch = async () => {
     try {
@@ -31,22 +32,38 @@ const Search = () => {
     handleSearch();
   }, [searchText]);
 
+
+
   const renderSearchResults = () => {
     if (searchText && searchResults.length === 0) {
-      return (<> <p>No Products Found...</p> <BestSellers /> </> )
+      return (<> <p className="text-center mt-5 font-bold">No Products Found...</p> 
+      <ul className="flex flex-wrap m-5 justify-between items-center md:flex-wrap gap-6 mt-10">
+        {products.map((product) => (
+          <li key={product.id}>
+            <ProductItem product={product} />
+          </li>
+        ))}
+      </ul>
+      </> )
 
         
       
     } else if (searchResults.length > 0) {
       return (
-        <div className="m-5">
+        <div className="flex flex-wrap m-5 justify-between items-center md:flex-wrap gap-6 mt-10">
           {searchResults.map((result) => (
             <ProductItem key={result.id} product={result} />
           ))}
         </div>
       );
     } else {
-      return <BestSellers />;
+      return <ul className="flex flex-wrap m-5 justify-between items-center md:flex-wrap gap-6 mt-10">
+      {products.map((product) => (
+        <li key={product.id}>
+          <ProductItem product={product} />
+        </li>
+      ))}
+    </ul>
     }
   };
 
@@ -66,7 +83,7 @@ const Search = () => {
         />
       </div>
 
-      <div className="m-10">{renderSearchResults()}</div>
+      <div>{renderSearchResults()}</div>
     </div>
   );
 };
