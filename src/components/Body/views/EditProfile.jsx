@@ -1,13 +1,15 @@
-import { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import InputBox from '../../misc/InputBox';
 import { useNavigate } from 'react-router-dom';
 import { ProfileContext } from '../../../contexts/ProfileProvider';
+import { getProfile } from '../../services/ProfileService';
 
 const EditProfile = () => {
   const navigate = useNavigate();
   const { profileData, updateProfile } = useContext(ProfileContext);
 
-  const [name, setName] = useState('');
+  const [firstName, setFirstname] = useState('');
+  const [lastName, setLastname] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [location, setLocation] = useState('');
@@ -15,7 +17,8 @@ const EditProfile = () => {
 
   useEffect(() => {
     if (profileData) {
-      setName(profileData.firstName);
+      setFirstname(profileData.firstName);
+      setLastname(profileData.lastName);
       setEmail(profileData.email);
       setPhone(profileData.phoneNumber);
       setLocation(profileData.location);
@@ -27,27 +30,33 @@ const EditProfile = () => {
     e.preventDefault();
 
     // Update the profile using the updated input values
-    const updatedProfile = {
-      firstName: name,
-      email: email,
-      phoneNumber: phone,
-      location: location,
-      imageUrl: imageUrl
-    };
-
-    const result = await updateProfile(updatedProfile);
+    const result = await updateProfile(
+      firstName,
+      lastName,
+      email,
+      phone,
+      location,
+      imageUrl
+    );
 
     if (result) {
       // Handle successful profile update
+      await getProfile();
+      setFirstname(firstName);
+      setEmail(email);
       navigate('/account');
+      
     } else {
       // Handle profile update error
+      console.log('Profile update failed.');
     }
+
   };
+
 
   return (
     <div className='flex justify-center items-center h-screen'>
-      <div className='max-w-lg w-full bg-white rounded-lg shadow-lg p-8 mt-20'>
+      <div className='max-w-lg w-full bg-white rounded-lg shadow-lg p-8 mt-40'>
         <div className='text-md text-center mt-32'>Edit profile</div>
 
         <div className='relative h-8 mt-5 mb-5'>
@@ -64,7 +73,8 @@ const EditProfile = () => {
         </div>
 
         <form method='put'>
-          <InputBox classes='w-full' label='NAME' type='text' id='Name' name='Name' placeholder='Enter your name' value={name} onChange={(e) => setName(e.target.value)} required={true} />
+          <InputBox classes='w-full' label='NAME' type='text' id='firstName' name='firstName' placeholder='Enter your first name' value={firstName} onChange={(e) => setFirstname(e.target.value)} required={true} />
+          <InputBox classes='w-full' label='NAME' type='text' id='lastName' name='lastName' placeholder='Enter your last name' value={lastName} onChange={(e) => setLastname(e.target.value)} required={true} />
           <InputBox classes='w-full' label='EMAIL' type='email' id='email' name='email' placeholder='Enter your email' value={email} onChange={(e) => setEmail(e.target.value)} required={true} />
           <InputBox classes='w-full' label='PHONE NUMBER' type='text' id='Phone' name='Phone' placeholder='Enter your phone number' value={phone} onChange={(e) => setPhone(e.target.value)} required={true} />
           <InputBox classes='w-full' label='LOCATION' type='text' id='location' name='location' placeholder='Enter your location' value={location} onChange={(e) => setLocation(e.target.value)} required={true} />

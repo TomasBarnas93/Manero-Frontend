@@ -22,16 +22,24 @@ const ProfileProvider = (props) => {
     }
   };
 
-  const updateProfile = async (props) => {
+  const updateProfile = async (firstName, lastName,email, phoneNumber,location, imageUrl) => {
     const token = localStorage.getItem('accessToken');
     const user = {
-      firstName: props.firstName,
-      lastName: props.lastName,
-      email: props.email,
-      phoneNumber: props.phoneNumber,
-      location: props.location,
-      imageUrl: props.imageUrl,
+      firstName,
+        lastName,
+      email,
+      phoneNumber,
+      location,
+      imageUrl,
+     
     };
+
+    // Remove null values from the user object
+    Object.keys(user).forEach((key) => {
+      if (user[key] === null) {
+        delete user[key];
+      }
+    });
 
     const result = await fetch(userUrl, {
       method: 'PUT',
@@ -41,7 +49,7 @@ const ProfileProvider = (props) => {
       },
       body: JSON.stringify(user),
     });
-
+    console.log(user)
     return result.status === 204;
   };
 
@@ -50,7 +58,7 @@ const ProfileProvider = (props) => {
   }, []);
 
   return (
-    <ProfileContext.Provider value={{ getProfile, profileData, updateProfile }}>
+    <ProfileContext.Provider value={{ getProfile, profileData , updateProfile}}>
       {props.children}
     </ProfileContext.Provider>
   );

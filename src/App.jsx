@@ -7,6 +7,7 @@ import SplashScreen from './components/Body/components/SplashScreen';
 import { ReviewProvider } from './contexts/ReviewProvider';
 import { ProfileProvider } from './contexts/ProfileProvider';
 
+
 function App() {
   const [hasVisitedBefore, setHasVisitedBefore] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -44,6 +45,7 @@ function App() {
           <ProfileProvider>
             <Header />
             <Body />
+           
           </ProfileProvider>
         </ReviewProvider>
       </ProductProvider>
