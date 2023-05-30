@@ -57,7 +57,15 @@ const EditProfile = () => {
   return (
     <div className='flex justify-center items-center h-screen'>
       <div className='max-w-lg w-full bg-white rounded-lg shadow-lg p-8 mt-40'>
-        <div className='text-md text-center mt-32'>Edit profile</div>
+        <div className='text-md text-center mt-32'
+        >  <button
+        className='absolute   h-8 w-8 flex items-center justify-center rounded-full '
+        onClick={() => navigate('/account')}
+      >
+        <i className='fas fa-chevron-left text-gray-500 cursor-pointer'></i>
+      </button>
+          Edit profile
+          </div>
 
         <div className='relative h-8 mt-5 mb-5'>
           <div className='absolute left-1/2 top-0 bg-black w-[1px] h-full'></div>

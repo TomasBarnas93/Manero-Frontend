@@ -46,7 +46,8 @@ const Account = () => {
   }
 
   if (authenticated === undefined) {
-    return <>Loading...</>;
+    return(<div></div>)
+   
   }
 
   return (
@@ -68,7 +69,7 @@ const Account = () => {
                 <i className="fas fa-pencil-alt absolute right-1 bottom-8 transform translate-x-1/4 translate-y-1/4 edit-icon bg-gray-300 rounded-full p-2"></i>
               </button>
             </div>
-            <h1 className="text-lg font-semibold mt-3">{profileData?.firstName}</h1>
+            <h1 className="text-lg font-semibold mt-3">{profileData?.firstName + " " + profileData?.lastName}</h1>
             <p className="text-gray-600 text-sm">{profileData?.email}</p>
           </div>
           <div className="border-t border-gray-300 w-full"></div>
@@ -112,7 +113,7 @@ const Account = () => {
             >
               Sign Out
             </button>
-            <i className="fas fa-edit text-gray-600 hover:text-gray-800 cursor-pointer absolute bottom-0 right-0 m-2"></i>
+
           </div>
         </div>
       </div>
