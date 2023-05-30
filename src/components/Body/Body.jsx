@@ -17,8 +17,6 @@ import Address from "./views/Address";
 import ReviewsAll from "./views/ReviewsAll";
 import OrderHistory from "./views/OrderHistory";
 import PromoCodes from "./views/PromoCodes";
-import OrderHistory from "./views/OrderHistory";
-import PromoCodes from "./views/PromoCodes";
 
 const Body = () => {
   return (
