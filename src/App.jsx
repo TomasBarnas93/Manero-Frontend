@@ -7,6 +7,7 @@ import SplashScreen from './components/Body/components/SplashScreen';
 import { ReviewProvider } from './contexts/ReviewProvider';
 import { ProfileProvider } from './contexts/ProfileProvider';
 import { AddressProvider } from './contexts/AddressProvider';
+import { OrderProvider } from './contexts/OrderProvider';
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
 
   return (
     <AuthProvider>
+      <OrderProvider>
       <ProductProvider>
         <ReviewProvider>
           <AddressProvider>
@@ -52,6 +54,7 @@ function App() {
           </AddressProvider>
         </ReviewProvider>
       </ProductProvider>
+      </OrderProvider>
     </AuthProvider>
   );
 }

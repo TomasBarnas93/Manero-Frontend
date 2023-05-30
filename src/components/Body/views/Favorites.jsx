@@ -23,9 +23,11 @@ const Favorites = () => {
         }
     }, [getFavorites, navigate]);
 
+    
     if(favorites === undefined){
         return (<>Loading ...</>);
     }
+
 
     if(favorites.length === 0){
         return (
