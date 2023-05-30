@@ -5,7 +5,7 @@ import { ProductContext } from '../../../contexts/ProductProvider';
 
 
 const Carousel = () => {
-  const products = useContext(ProductContext);
+  const {products} = useContext(ProductContext);
   const [activeSlide, setActiveSlide] = useState(0);
 
 
@@ -21,7 +21,7 @@ const Carousel = () => {
 
   return (
     <div>
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center mt-5">
         <div className="relative w-80 h-80">
           {slides.map((slide, index) => (
             <img

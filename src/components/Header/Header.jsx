@@ -58,27 +58,29 @@ export const Header = () => {
 
         {/* Shopping Cart */}
         <div className="col-start-10 col-span-1 text-center relative">
+        <NavLink to="/ShoppingCart">
           <Icon
-            to="shoppingCart"
+            to="/shoppingCart"
             button="text-xl"
             icon="fa-regular fa-bag-shopping"
-          ></Icon>
+          />
           <span
             className={
-              cartCount === 0
-                ? "hidden"
+             cartCount === 0
+               ? "hidden"
                 : "absolute rounded-full bg-red-400 w-4 h-4 text-white text-sm leading-tight text-center"
-            }
+             }
           >
-            {cartCount}
+           {cartCount}
           </span>
+        </NavLink>
         </div>
 
         {/* Bottom menu, small screen */}
         <div className="border-t h-14 bottom-menu lg:hidden">
           <div className="grid grid-cols-5 py-3">
             <div className={`col-start-1 col-span-1 text-center`}>
-              <Icon to="/" button="text-xl" icon="fa-light fa-home-lg" />
+              <Icon to="/" button="text-xl" icon="fa-light fa-home-lg" active={activePageMobile}/>
             </div>
 
             <div className="col-start-2 col-span-1 text-center">
