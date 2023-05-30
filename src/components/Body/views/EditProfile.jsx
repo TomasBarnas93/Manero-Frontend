@@ -65,7 +65,7 @@ const EditProfile = () => {
 
         <div className='flex justify-center sm:flex'>
           <div className='w-42 h-42 rounded-full border-4 border-gray-300 relative'>
-            <img src={imageUrl} className='w-40 h-40 rounded-full'/>
+            <img src={imageUrl} className='w-40 h-40 rounded-full' alt="ProfilePicture" />
             <button className='block w-full h-full bg-transparent border-none' onClick={() => { }}>
               <i className='fas fa-camera absolute right-1 bottom-8 transform translate-x-1/4 translate-y-1/4 edit-icon bg-gray-300 rounded-full p-2'></i>
             </button>

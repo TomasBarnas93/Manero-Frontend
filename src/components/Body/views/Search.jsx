@@ -1,13 +1,11 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { ProductContext } from "../../../contexts/ProductProvider";
 import ProductItem from "../components/ProductItem";
-import BestSellers from "../components/BestSellers";
 
 const Search = () => {
-  const { fetchSearchProduct } = useContext(ProductContext);
+  const { fetchSearchProduct, products } = useContext(ProductContext);
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const { products } = useContext(ProductContext);
 
   const handleSearch = async () => {
     try {
@@ -28,26 +26,20 @@ const Search = () => {
     }
   };
 
-  useEffect(() => {
-    handleSearch();
-  }, [searchText]);
-
-
-
   const renderSearchResults = () => {
     if (searchText && searchResults.length === 0) {
-      return (<> <p className="text-center mt-5 font-bold">No Products Found...</p> 
-      <ul className="flex flex-wrap m-5 justify-between items-center md:flex-wrap gap-6 mt-10">
-        {products.map((product) => (
-          <li key={product.id}>
-            <ProductItem product={product} />
-          </li>
-        ))}
-      </ul>
-      </> )
-
-        
-      
+      return (
+        <>
+          <p className="text-center mt-5 font-bold">No Products Found...</p>
+          <ul className="flex flex-wrap m-5 justify-between items-center md:flex-wrap gap-6 mt-10">
+            {products.map((product) => (
+              <li key={product.id}>
+                <ProductItem product={product} />
+              </li>
+            ))}
+          </ul>
+        </>
+      );
     } else if (searchResults.length > 0) {
       return (
         <div className="flex flex-wrap m-5 justify-between items-center md:flex-wrap gap-6 mt-10">
@@ -57,13 +49,15 @@ const Search = () => {
         </div>
       );
     } else {
-      return <ul className="flex flex-wrap m-5 justify-between items-center md:flex-wrap gap-6 mt-10">
-      {products.map((product) => (
-        <li key={product.id}>
-          <ProductItem product={product} />
-        </li>
-      ))}
-    </ul>
+      return (
+        <ul className="flex flex-wrap m-5 justify-between items-center md:flex-wrap gap-6 mt-10">
+          {products.map((product) => (
+            <li key={product.id}>
+              <ProductItem product={product} />
+            </li>
+          ))}
+        </ul>
+      );
     }
   };
 
