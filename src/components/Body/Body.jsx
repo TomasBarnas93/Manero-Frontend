@@ -14,6 +14,7 @@ import EditProfile from "./views/EditProfile";
 import Search from "./views/Search";
 import MyAddress from "./views/MyAddress";
 import AddReview from "./views/AddReview";
+import Address from "./views/Address";
 
 const Body = () => {
   return (
@@ -34,7 +35,7 @@ const Body = () => {
         <Route path="/shoppingCart" element={<ShoppingCart />} />
         <Route path="/edit-profile" element={<EditProfile/>}/>
         <Route path="/AddReview/:id" element={<AddReview />} />
-        <Route path="/my-address" element={<MyAddress />} />
+        <Route path="/my-address" element={<Address />} />
       </Routes>
     </main>
   );

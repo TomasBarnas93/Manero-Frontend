@@ -6,6 +6,7 @@ import { AuthProvider } from './contexts/AuthProvider';
 import SplashScreen from './components/Body/components/SplashScreen';
 import { ReviewProvider } from './contexts/ReviewProvider';
 import { ProfileProvider } from './contexts/ProfileProvider';
+import { AddressProvider } from './contexts/AddressProvider';
 
 
 function App() {
@@ -42,11 +43,13 @@ function App() {
     <AuthProvider>
       <ProductProvider>
         <ReviewProvider>
+          <AddressProvider>
           <ProfileProvider>
             <Header />
             <Body />
            
           </ProfileProvider>
+          </AddressProvider>
         </ReviewProvider>
       </ProductProvider>
     </AuthProvider>
