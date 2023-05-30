@@ -41,8 +41,6 @@ const Body = () => {
         <Route path="/reviews/:id" element={<ReviewsAll/>}/>
         <Route path="/order-history" element={<OrderHistory />} />
         <Route path="/my-promocodes" element={<PromoCodes />} />
-        <Route path="/order-history" element={<OrderHistory />} />
-        <Route path="/my-promocodes" element={<PromoCodes />} />
       </Routes>
     </main>
   );
