@@ -21,7 +21,6 @@ export const handleRegisterService = async (firstName, lastName, email, password
 
     })
     if (result.status === 201) {
-        const data = await result.json();
         return true;
     }
     

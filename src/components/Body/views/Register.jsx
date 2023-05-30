@@ -3,10 +3,8 @@
     import Icon from '../../misc/Icon';
     import { useState, useContext } from 'react';
     import { AuthContext } from '../../../contexts/AuthProvider';
-    import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
-    const navigate = useNavigate();
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');

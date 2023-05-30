@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import Home from '../views/Home';
 import Icon from '../../misc/Icon';
 
 function ShoppingCart() {
   const [cartItems, setCartItems] = useState([]);
-  const [currentStep, setCurrentStep] = useState(1);
 
   useEffect(() => {
     const storedCartItems = JSON.parse(localStorage.getItem('cartItems'));
@@ -20,10 +18,6 @@ function ShoppingCart() {
 
   const removeFromCart = (itemId) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
-  };
-
-  const handleStepChange = (step) => {
-    setCurrentStep(step);
   };
 
   return (
