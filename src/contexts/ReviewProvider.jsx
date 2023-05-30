@@ -23,7 +23,7 @@ const ReviewProvider = ({ children, productId }) => {
   const addReview = async (id, review) => {
     try {
       const data = await ReviewPostService(id, review);
-      setReviews([...reviews, data]); // Add the new review to the existing list
+      setReviews([...reviews, data]);
     } catch (error) {
       console.error('Error adding review:', error);
       throw error;
