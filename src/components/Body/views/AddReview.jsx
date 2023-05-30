@@ -25,6 +25,7 @@ const AddReview = () => {
     if (authUser === false) {
       navigate("/login");
     }
+    navigate(`/details/${id}`);
 
     const review = {
       rating: rating,
@@ -66,7 +67,7 @@ const AddReview = () => {
       <h2 className="font-bold text-2xl">Please rate the quality of</h2>
       <h2 className="font-bold text-2xl mb4"> service for the order!</h2>
 
-      <StarRating rating={rating} handleRatingChange={handleRatingChange} />
+      <StarRating rating={rating} handleRatingChange={handleRatingChange}/>
         <h4 className="mt-6 mb-6 text-sm text-gray-500">
         Your comments and suggestions help us <br /> improve the security quality better
       </h4>
@@ -77,10 +78,9 @@ const AddReview = () => {
         placeholder="Enter your comment"
         className="border border-gray-300 rounded-lg px-4 py-2 mb-4 resize-none w-full md:w-56 h-32"
       />
-
       <button
         onClick={submitReview}
-        className="bg-black hover:bg-blue-600 text-white w-80 py-2 rounded-3xl mt-11 mb-32"
+        className="bg-black hover:bg-blue-600 text-white w-80 py-2 rounded-3xl mt-11 mb-32" 
       >
         Submit
       </button>
