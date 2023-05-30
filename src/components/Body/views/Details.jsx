@@ -45,8 +45,8 @@ function Details() {
 
 
   return (
-    <div className="container px-4 mx-auto">
-      <div>
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      <div className="mt-5">
         <img
           src={product.imageUrl}
           alt="img"
