@@ -14,12 +14,11 @@ import EditProfile from "./views/EditProfile";
 import Search from "./views/Search";
 import AddReview from "./views/AddReview";
 import Address from "./views/Address";
-<<<<<<< HEAD
 import ReviewsAll from "./views/ReviewsAll";
-=======
 import OrderHistory from "./views/OrderHistory";
 import PromoCodes from "./views/PromoCodes";
->>>>>>> af3a771ecd211d811d647b685d07c11f121d368f
+import OrderHistory from "./views/OrderHistory";
+import PromoCodes from "./views/PromoCodes";
 
 const Body = () => {
   return (
@@ -41,12 +40,11 @@ const Body = () => {
         <Route path="/edit-profile" element={<EditProfile/>}/>
         <Route path="/AddReview/:id" element={<AddReview />} />
         <Route path="/my-address" element={<Address />} />
-<<<<<<< HEAD
         <Route path="/reviews/:id" element={<ReviewsAll/>}/>
-=======
         <Route path="/order-history" element={<OrderHistory />} />
         <Route path="/my-promocodes" element={<PromoCodes />} />
->>>>>>> af3a771ecd211d811d647b685d07c11f121d368f
+        <Route path="/order-history" element={<OrderHistory />} />
+        <Route path="/my-promocodes" element={<PromoCodes />} />
       </Routes>
     </main>
   );
