@@ -1,13 +1,15 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import StarRating from "../../misc/StarRating";
-import { ProductContext } from "../../../contexts/ProductProvider";
-import Reviews from "../../misc/Reviews"
+import { ProductProvider, ProductContext } from "../../../contexts/ProductProvider";
+import Reviews from "../../misc/Reviews";
 import { ReviewProvider } from "../../../contexts/ReviewProvider";
+import { AuthContext } from "../../../contexts/AuthProvider";
+import CartItem from "../components/CartItem";
 
 function Details() {
   const { id } = useParams();
-  const { fetchSingleProduct } = useContext(ProductContext);
+  const { fetchSingleProduct, addToCart } = useContext(ProductContext);
   const [counter, setCounter] = useState(1);
   const [product, setProduct] = useState();
 
@@ -95,14 +97,16 @@ function Details() {
           <p>Description</p>
           <p className="text-zinc-400 font-light">{product.description}</p>
         </div>
-        <button className="bg-black hover:bg-blue-600 text-white w-80 py-2 rounded-3xl mt-11">
+        <button
+          className="bg-black hover:bg-blue-600 text-white w-80 py-2 rounded-3xl mt-11"
+          onClick={() => CartItem(product)}
+        >
           + ADD TO CART
         </button>
 
         <ReviewProvider productId={id}>
           <Reviews />
         </ReviewProvider>
-
       </div>
     </div>
   );

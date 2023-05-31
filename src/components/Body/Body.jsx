@@ -8,7 +8,10 @@ import Register from "./views/Register";
 import Logout from "./views/Logout";
 import Favorites from "./views/Favorites";
 import Contact from "./views/Contact";
-import ShoppingCart from "./components/ShoppingCart";
+import CartItem from "./components/CartItem";
+import ShoppingCart from "./views/ShoppingCart";
+import CartIcon from "./components/CartIcon";
+
 
 const Body = () => {
   return (
@@ -16,7 +19,6 @@ const Body = () => {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/search" element={<Home />} />
-        <Route path="/cart" element={<Home />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/account" element={<Account />} />
         <Route path="/contacts" element={<Contact />} />
@@ -26,6 +28,8 @@ const Body = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/shoppingCart" element={<ShoppingCart />} />
+        <Route path="/cartItem" element={<CartItem />}/>
+        <Route path="/cartIcon" element={<CartIcon />}/>
       </Routes>
     </main>
   );
