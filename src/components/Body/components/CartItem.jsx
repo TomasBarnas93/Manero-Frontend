@@ -3,6 +3,8 @@ import StarRating from '../../misc/StarRating';
 import CartIcon from './CartIcon';
 
 const CartItem = ({ product, addedState, updateAddedState, removeProduct }) => {
+  
+  
   const submitRemove = () => {
     removeProduct(product.id);
   };
