@@ -25,7 +25,7 @@ const ShoppingCart = () => {
   }, []);
 
   const handleShopNow = () => {
-    navigate('/home')
+    navigate('/')
   };
 
   const removeProduct = (id) => {
