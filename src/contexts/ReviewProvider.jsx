@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { ReviewService } from '../components/services/ReviewService';
+import { ReviewService, ReviewPostService } from '../components/services/ReviewService';
 
 const ReviewContext = createContext();
 
@@ -19,9 +19,20 @@ const ReviewProvider = ({ children, productId }) => {
     fetchData();
   }, [productId]);
 
+
+  const addReview = async (id, review) => {
+    try {
+      const data = await ReviewPostService(id, review);
+      setReviews([...reviews, data]);
+    } catch (error) {
+      console.error('Error adding review:', error);
+      throw error;
+    }
+  };
+
   return (
     <ReviewContext.Provider 
-    value={reviews}>{children}
+    value={{reviews, addReview}}>{children}
     </ReviewContext.Provider>
   );
 };

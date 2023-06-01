@@ -1,4 +1,8 @@
 // ProductItem.js
+import {React} from "react";
+import { useNavigate } from "react-router-dom";
+import StarRating from "../../misc/StarRating";
+import HeartIcon from "./HeartIcon";
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -14,8 +18,8 @@ const ProductItem = ({ product, updateAddedState }) => {
   };
 
   return (
-    <>
-      <button className="relative">
+    <div>
+      <button className="relative" >
         <img
           className="rounded-lg shadow-md p-4 h-64 w-56"
           src={product.imageUrl}
@@ -43,7 +47,7 @@ const ProductItem = ({ product, updateAddedState }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

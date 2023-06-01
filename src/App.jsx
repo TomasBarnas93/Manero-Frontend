@@ -1,10 +1,13 @@
-import React, {useEffect , useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ProductProvider } from './contexts/ProductProvider';
 import Body from './components/Body/Body';
 import { Header } from './components/Header/Header';
 import { AuthProvider } from './contexts/AuthProvider';
 import SplashScreen from './components/Body/components/SplashScreen';
 import { ReviewProvider } from './contexts/ReviewProvider';
+import { ProfileProvider } from './contexts/ProfileProvider';
+import { AddressProvider } from './contexts/AddressProvider';
+import { OrderProvider } from './contexts/OrderProvider';
 
 
 function App() {
@@ -30,21 +33,28 @@ function App() {
   }
 
   if (!hasVisitedBefore) {
-  return (
+    return (
       <div>
-      <SplashScreen onComplete={() => setHasVisitedBefore(true)} />
+        <SplashScreen onComplete={() => setHasVisitedBefore(true)} />
       </div>
     );
   }
 
   return (
     <AuthProvider>
-    <ProductProvider>
-    <ReviewProvider>
-      <Header />
-      <Body />
-    </ReviewProvider>
-    </ProductProvider>
+      <OrderProvider>
+      <ProductProvider>
+        <ReviewProvider>
+          <AddressProvider>
+          <ProfileProvider>
+            <Header />
+            <Body />
+           
+          </ProfileProvider>
+          </AddressProvider>
+        </ReviewProvider>
+      </ProductProvider>
+      </OrderProvider>
     </AuthProvider>
   );
 }

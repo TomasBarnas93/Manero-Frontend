@@ -6,6 +6,8 @@ import Reviews from "../../misc/Reviews";
 import { ReviewProvider } from "../../../contexts/ReviewProvider";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import CartItem from "../components/CartItem";
+import { Link } from "react-router-dom";
+import HeartIcon from "../components/HeartIcon";
 
 function Details() {
   const { id } = useParams();
@@ -43,9 +45,10 @@ function Details() {
     return <>loading..</>;
   }
 
+
   return (
-    <div className="container px-4 mx-auto">
-      <div>
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      <div className="mt-5">
         <img
           src={product.imageUrl}
           alt="img"
@@ -55,9 +58,7 @@ function Details() {
       <div className="pt-4">
         <div className="flex gap-24">
           <h2 className="font-bold">{product.name}</h2>
-          <button className="link">
-            <i className="fa-regular fa-heart opacity-50"></i>
-          </button>
+          <HeartIcon id={product.id} liked={product.liked} />
         </div>
         <StarRating rating={product.rating} />
         <div className="flex gap-48">
@@ -107,6 +108,12 @@ function Details() {
         <ReviewProvider productId={id}>
           <Reviews />
         </ReviewProvider>
+
+        <Link to={`/AddReview/${id}`}>
+          <button className="bg-black hover:bg-blue-600 text-white w-80 py-2 rounded-3xl mt-11 mb-32">
+            Add Review
+          </button>
+        </Link>
       </div>
     </div>
   );

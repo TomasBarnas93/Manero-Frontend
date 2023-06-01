@@ -2,7 +2,7 @@ import React from 'react';
 
 const SignoutConfirm = ({ onConfirm, onCancel }) => {
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
       <div className="w-80 h-80 flex items-center justify-center">
         <div className="relative w-72 h-72 rounded-full flex flex-col items-center justify-center">
           <div className="absolute w-80 h-80 rounded-full bg-transparent flex items-center justify-center border-8 border-white"></div>

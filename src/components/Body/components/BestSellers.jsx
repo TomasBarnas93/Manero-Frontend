@@ -38,7 +38,7 @@ const BestSellers = () => {
     <div className="mt-5 mb-5 ml-2">
       <div className="flex justify-between pr-5">
         <h2 className="font-bold">Best Sellers</h2>
-        <Link to={`/${tagName}`} children="Best Sellers">view all&gt;</Link>
+        <Link to={`/tag/${tagName}`}>view all&gt;</Link>
       </div>
       <ul className="flex gap-6">
         {limitedProducts.map((product) => (

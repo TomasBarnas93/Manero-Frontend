@@ -4,7 +4,7 @@ import ProductItem from "../components/ProductItem";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const Tag = ({ children }) => {
+const Tag = () => {
   const { tagName } = useParams();
   const { products } = useContext(ProductContext);
 
@@ -35,12 +35,12 @@ const Tag = ({ children }) => {
   return (
     <>
       <h1 className="font-bold text-center mt-5 mb-5 ml-2">
-        {tagName} {children}
+        {tagName}
       </h1>
       <div className="m-auto max-w-7xl">
         <div className="flex flex-col m-5 justify-between items-center md:flex-row">
           <div className="mb-8 md:mb-5">
-            <Link to={`/filters`}>
+            <Link to={`/filter`}>
               <div className="flex gap-2 mt-4">
                 <i className="fa-light fa-filter fa-xl"></i>
                 <p>Filters</p>
