@@ -1,19 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import AddressRow from '../components/AddressRow';
 import { AddressContext } from '../../../contexts/AddressProvider';
 import { useNavigate } from 'react-router-dom';
 
 const Address = () => {
-  const { addressData } = useContext(AddressContext);
+  const { addressData, getAddress } = useContext(AddressContext);
   const navigate = useNavigate();
 
   const handleAddAddress = () => {
-    navigate('/edit-profile');
+    navigate('/add-address');
   };
 
   const handleGoToAccount = () => {
     navigate('/account');
   };
+
+  useEffect(() => {
+    getAddress(); // Fetch the address data on component mount and whenever there's a change in addressData
+  }, [getAddress, addressData]);
 
   return (
     <div className="flex justify-center mx-4">
@@ -26,21 +30,20 @@ const Address = () => {
         </div>
         <div className="card-body">
           {addressData && (
-            <div className="mx-4"> {/* Added margin to the container */}
-            {addressData.map((address) => (
-  <AddressRow
-    key={address.id}
-    title={address.title}
-    street={address.street}
-    postalCode={address.postalCode}
-    city={address.city}
-    iconClass="fas fa-map-marker-alt"
-    addBottomBorder
-    fullWidth
-    onClick={() => navigate('/edit-profile')}
-  />
-))}
-
+            <div className="mx-4">
+              {addressData.map((address) => (
+                <AddressRow
+                  key={address.id}
+                  title={address.title}
+                  street={address.street}
+                  postalCode={address.postalCode}
+                  city={address.city}
+                  iconClass="fas fa-map-marker-alt"
+                  addBottomBorder
+                  fullWidth
+                  onClick={() => navigate('/edit-profile')}
+                />
+              ))}
             </div>
           )}
         </div>
