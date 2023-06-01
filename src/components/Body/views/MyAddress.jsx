@@ -36,6 +36,7 @@ const MyAddress = () => {
       // Handle the error or show an error message
     }
   };
+  console.log(addressData);
 
   return (
     <div className='flex justify-center items-center h-screen'>
