@@ -31,7 +31,6 @@ const MyAddress = () => {
       navigate('/my-address');
  
   };
-  console.log(addressData);
 
   return (
     <div className='flex justify-center items-center h-screen'>
