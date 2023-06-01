@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import InputBox from '../../misc/InputBox';
 
 const MyAddress = () => {
-  const { addressData, updateAddress } = useContext(AddressContext);
+  const { updateAddress } = useContext(AddressContext);
   const navigate = useNavigate();
 
   const [title, setTitle] = useState('');
@@ -26,15 +26,10 @@ const MyAddress = () => {
       city,
     };
 
-    const success = await updateAddress(newAddress);
-    if (success) {
-      // Address updated successfully
-      // Perform any additional actions or show a success message
+    await updateAddress(newAddress);
+ 
       navigate('/my-address');
-    } else {
-      // Address update failed
-      // Handle the error or show an error message
-    }
+ 
   };
 
   return (
@@ -128,10 +123,9 @@ const MyAddress = () => {
           />
 
           <button
-            className='bg-black hover:bg-blue-600 text-white w-full py-2 rounded-3xl mb-20 mt-2'
-            type='submit' onClick={() => navigate('/my-address')}
-          
-          >
+            className='bg-black hover:bg-blue-600 text-white w-full py-2 rounded-3xl mt-20'
+            type='submit'>
+            
             Add Address
           </button>
         </form>

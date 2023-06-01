@@ -41,13 +41,13 @@ const Address = () => {
                   iconClass="fas fa-map-marker-alt"
                   addBottomBorder
                   fullWidth
-                  onClick={() => navigate('/edit-profile')}
+                  onClick={() => navigate('/add-address')}
                 />
               ))}
             </div>
           )}
         </div>
-        <div className="flex items-center justify-center mt-5">
+        <div className="flex items-center justify-center mt-8">
           <button onClick={handleAddAddress} className="focus:outline-none">
             <i className="fas fa-plus-circle text-gray-500 text-2xl"></i>
           </button>
