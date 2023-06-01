@@ -9,7 +9,7 @@ import Logout from "./views/Logout";
 import Favorites from "./views/Favorites";
 import Contact from "./views/Contact";
 import Filter from "./views/Filter";
-import ShoppingCart from "./components/ShoppingCart";
+import ShoppingCart from "./views/ShoppingCart";
 import EditProfile from "./views/EditProfile";
 import Search from "./views/Search";
 import AddReview from "./views/AddReview";
@@ -36,8 +36,6 @@ const Body = () => {
         <Route path="/logout" element={<Logout />} />
         <Route path="/filter" element={<Filter />} />
         <Route path="/shoppingCart" element={<ShoppingCart />} />
-        <Route path="/cartItem" element={<CartItem />}/>
-        <Route path="/cartIcon" element={<CartIcon />}/>
         <Route path="/edit-profile" element={<EditProfile/>}/>
         <Route path="/AddReview/:id" element={<AddReview />} />
         <Route path="/my-address" element={<Address />} />

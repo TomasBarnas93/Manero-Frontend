@@ -1,9 +1,3 @@
-// ProductItem.js
-import {React} from "react";
-import { useNavigate } from "react-router-dom";
-import StarRating from "../../misc/StarRating";
-import HeartIcon from "./HeartIcon";
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import StarRating from '../../misc/StarRating';
